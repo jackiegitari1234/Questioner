@@ -17,8 +17,29 @@
         </div>
             
         <div class="container">
-            <a class="link" href="register.html">Join Us Today</a>
-            <p>"Alone we can do so little; together we can do so much"</p>
+            <div class="userform" >
+                <form method="post">
+                    <p>Please Fill-In Your Personal Details Below</p>
+                             
+                    <label for="fullname">Fullname <span class="required">*</span> </label>
+                    <input class="form-control " type="name" id="fullname" name="fullname" placeholder="fullname"/>
+                        
+                    <label for="myemail">Email <span class="required">*</span> </label>
+                    <input class="form-control " type="text" id="myemail" name="email" placeholder="example@email.com" />
+                
+                    <label for="mypassword">Password <span class="required">*</span> </label>
+                    <input class="form-control" type="password" id="password" name="password" placeholder="********"/>
+
+                    <label for="cmypassword">Confirm Password <span class="required">*</span></label>
+                    <input class="form-control" type="password" id="cpassword" name="cpass" placeholder="********"/><br>
+                        
+                    
+                    <button class="alert" type="reset" name="cancel">Cancel</button>
+                
+                    <button class="success" type="submit" name="submit"> Submit</button>
+                  
+                </form>
+            </div>
         </div>
 
         <div class="footer">

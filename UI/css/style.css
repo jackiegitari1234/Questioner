@@ -57,9 +57,10 @@ p{
 .container .link{
     color: aqua;
     display: inline-block;
-    padding:50px;
+    padding: 3em;
     font-size: 2em;
     border-radius: 0.5em;
+    width: 30%;
     
 }
 .rightsection{
@@ -70,4 +71,51 @@ p{
     border-radius: 1em;
     border:0.2em solid #141313;
     
+}
+.userform{
+    display: inline-block;
+    border-style: ridge;
+    width: 30%;
+    border-radius:0.5em;
+    text-align: left;
+    padding: 1em;
+    color: aqua;
+    font-size: 1.5em;
+    margin-top: 5%;
+    
+}
+.form-control{
+    margin-bottom: 1em;
+    width: 70%;
+    border-radius:0.5em;
+    height:5%;
+    padding-left: 0.5em;
+}
+label { 
+    display: block; 
+}
+
+button{
+    margin: 0.5em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    width:20%
+}
+.alert{
+    background-color: red;
+}
+.info{
+    border-radius: 0.5em;
+}
+
+.success{
+    background-color: #4CAF50;
+    
+}
+.required{
+    color: red;
+    text-align:center
+}
+p{
+    text-align:center;
 }
