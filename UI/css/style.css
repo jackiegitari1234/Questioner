@@ -84,6 +84,11 @@ p{
     margin-top: 5%;
     
 }
+.loginpage{
+    float: left;
+    margin-left: 10%;
+
+}
 .form-control{
     margin-bottom: 1em;
     width: 70%;
@@ -107,7 +112,7 @@ button{
 }
 
 .success{
-    background-color: aqua;
+    background-color: #4CAF50;
     
 }
 p{
