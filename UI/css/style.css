@@ -138,6 +138,7 @@ button{
     
 }
 
+
 .allmeetups  {
     width: 100%;
     float: left; 
@@ -195,7 +196,7 @@ button{
     color: black;
     text-align:center;
 }
-.details button{
+.details .btn{
     float: right;
 }
 textarea{
@@ -206,4 +207,11 @@ textarea{
     padding: 0.5em;
     text-align: center;
     width: 90%;
+}
+#cont {
+    display: none; 
+    padding-left : 10%
+}
+.comments:focus + #cont {
+    display: block;
 }
