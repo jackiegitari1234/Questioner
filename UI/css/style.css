@@ -141,6 +141,15 @@ button{
     background-color: aqua;
     
 }
+.admsuccess{
+    font-size: 1em;
+    height:3em;
+
+}
+.adm_alert{
+    width:10%;
+    float: right;
+}
 
 
 .allmeetups  {
@@ -248,6 +257,10 @@ textarea{
     float: left;
     border-radius: 50%;
 }
+.user_image{
+    margin-left: 40%;
+
+}
 .admin_image{
     width:20%;
     height: 35%;
@@ -289,10 +302,17 @@ textarea{
     font-size: 0.9em; 
     margin: 0.5;
 }
-.user{
-    color: black;
+.user .profilepg p{
+    /* color: black; */
     font-size: 1.5em;
     
+}
+.pflpg{
+    font-size: 1.5em;
+    text-align: left;
+    float: left;
+    width:20%;
+    margin-top: 1em;
 }
 #admin{
     color: black;
