@@ -215,3 +215,17 @@ textarea{
 .comments:focus + #cont {
     display: block;
 }
+#cont2 {
+    display: none; 
+    padding-left : 10%
+}
+.comments2:focus + #cont2 {
+    display: block;
+}
+#cont3 {
+    display: none; 
+    padding-left : 10%
+}
+.comments3:focus + #cont3 {
+    display: block;
+}
