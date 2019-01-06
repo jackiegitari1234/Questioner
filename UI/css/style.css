@@ -223,7 +223,7 @@ textarea{
     display: none; 
     padding-left : 10%
 }
-.comments:focus + #cont {
+.comment:focus + #cont {
     display: block;
 }
 #cont2 {
