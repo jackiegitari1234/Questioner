@@ -45,7 +45,6 @@ p{
 .container h{
     font-size: 2em;
     color: white;
-    padding: 0.5em;
 }
 
 .topnavbar a {
@@ -213,6 +212,13 @@ textarea{
     text-align: center;
     width: 90%;
 }
+.admin_content{
+    width: 90%;
+    border:0.1em solid #141313;
+    clear: both;
+    margin: auto;
+    margin-top: 20em;
+}
 #cont {
     display: none; 
     padding-left : 10%
@@ -249,6 +255,9 @@ textarea{
 }
 .profile, .user{
     clear: both;
+}
+.admin{
+    margin-top: 3em;
 }
 .profile, .profilepg p{
     color: aqua;
