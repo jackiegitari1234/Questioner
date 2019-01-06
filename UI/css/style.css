@@ -258,12 +258,13 @@ textarea{
     margin: 2em 1em 1em 0.5em;
     font-size: 1.5em;
     border-radius: 1em;
-    border:0.1em solid #141313;
+    background-color: white;
+    color: black;
 }
 .posts{
     text-align: left;
-    line-height: 1.5em;
-    font-size: 0.8em; 
+    line-height: 2.5em;
+    font-size: 0.9em; 
     margin: 0.5;
 }
 
