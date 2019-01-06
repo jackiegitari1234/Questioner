@@ -255,7 +255,16 @@ textarea{
 .questions, .comments, .top_meet{
     width: 30%;
     float: left;
-    margin-top: 2em;
+    margin: 2em 1em 1em 0.5em;
     font-size: 1.5em;
+    border-radius: 1em;
+    background-color: white;
+    color: black;
+}
+.posts{
+    text-align: left;
+    line-height: 2.5em;
+    font-size: 0.9em; 
+    margin: 0.5;
 }
 
