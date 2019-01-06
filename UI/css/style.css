@@ -42,6 +42,11 @@ p{
     padding: 0.5em ;
     
 }
+.container h{
+    font-size: 2em;
+    color: white;
+    padding: 0.5em;
+}
 
 .topnavbar a {
     float: right;
