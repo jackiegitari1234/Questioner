@@ -244,11 +244,19 @@ textarea{
 .image{
     width: 10%;
     height:20%;
-    margin-left: 30%;
+    margin-left: 10%;
+    float: left;
+    border-radius: 50%;
+}
+.admin_image{
+    width:20%;
+    height: 35%;
+    margin-left: 10%;
     float: left;
     border-radius: 50%;
 }
 .profilepg{
+    text-align: left;
     float: left;
     width:20%;
 
@@ -289,4 +297,10 @@ textarea{
 #admin{
     color: black;
     font-size: 2em;
+}
+.meets{
+    width: 30%;
+    float: right;
+    text-align: left;
+    padding: 1em;
 }
