@@ -323,6 +323,7 @@ textarea{
     float: right;
     text-align: left;
     padding: 1em;
+    font-size: 1.5em;
 }
 .saying{
     font-size: 1.5em;
@@ -331,3 +332,4 @@ textarea{
 .userform a{
     color: aqua;
 }
+
