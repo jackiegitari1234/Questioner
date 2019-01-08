@@ -18,6 +18,6 @@ def reg_validation():
     location = userdata['location']
     happeningOn = userdata['happeningOn']
 
-    return jsonify({"status": 200, "message": "the meet up {} was added successfully".format(topic)}), 400
+    return jsonify({"status": 201, "message": "the meet up {} was added successfully".format(topic)}), 400
 
 
