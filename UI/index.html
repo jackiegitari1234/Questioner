@@ -10,34 +10,56 @@
     
     <body class="body">
 
-        <div class="topnavbar">
-            <h>Questioner</h>
-            <a href="register.html">Register</a>
-            <a href="index.html">Login</a>
-            <a href="admin.html">Admin Profile</a>
-            <a href="meetups.html">View Meetups</a>
-            <a href="profile.html">User Profile</a>
-        </div>
+            <div class="nav">
+                <div class="menu">
+                    <label for="show-menu" class="show-menu">Show Menu</label>
+                    <input type="checkbox" id="show-menu" role="button">
+                    <div class="title">
+                        Questioner
+                    </div>
+                    <ul id="menu">
+                        <li>
+                            <a href="register.html">Register</a>
+                        </li>
+                        <li>
+                            <a href="index.html">Login</a>
+                        </li>
+                        <li>
+                            <a href="admin.html">Admin Profile</a>
+                            
+                        </li>
+                        <li>
+                            <a href="meetups.html">View Meetups</a>
+                        </li>
+                        <li>
+                            <a href="profile.html">User Profile</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             
         <div class="container">
+            <div class="mypages">
+                <div class="login_contents">
+                        <a class="link" href="register.html">Join Us Today</a><br><br><br>
+                        
+                        <i class="saying">"Alone we can do so little; together we can do so much"</i>
+                </div>
 
-            <form class="userform loginpage">
-                <h>Please Login Below</h> <br><br>
-                <label for="myemail">Email <span class="required">*</span> </label>
-                <input class="form-control " type="text" id="myemail" name="email" placeholder="example@email.com" />
-            
-                <label for="mypassword">Password <span class="required">*</span> </label>
-                <input class="form-control" type="password" id="password" name="password" placeholder="********"/>
-                <br>
+                <form class="userform">
+                    <h>Please Login Below</h> <br><br>
+                    <label for="myemail">Email </label>
+                    <input class="form-control " type="text" id="myemail" name="email" placeholder="example@email.com" />
                 
-                <button class="success " type="submit" name="submit"> Login</button><br>
-                <a href="reset_pwd.html">forgoten password?Click this link to reset it</a>
-            </form>
-
-            <a class="link" href="register.html">Join Us Today</a><br>
-            
-            <i class="saying">"Alone we can do so little; together we can do so much"</i>
-
+                    <label for="mypassword">Password</label>
+                    <input class="form-control" type="password" id="password" name="password" placeholder="********"/>
+                    <br>
+                    
+                    <button class="success btn_full" type="submit" name="submit"> Login</button><br>
+                    <a href="reset_pwd.html">forgoten password?Click this link to reset it</a>
+                </form>
+                
+            </div>
         </div>
 
         <div class="footer">

@@ -1,8 +1,8 @@
 body{
-    font-size: 0.7em;
+    font-size: 1em;
     padding: 0;
     margin:0;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: sans-serif;
     text-align:center;
 
 }
@@ -10,120 +10,130 @@ body{
     background:url('../images/conference-room-768441_1920.jpg') no-repeat ;
     background-size: 100% 100%;
 }
+
+/* nav bar  */
+.menu{
+    float: right;
+    width: 100%;
+    background-color: aqua;
+}
+.title{
+    float:left;
+    font-size: 3em;
+    padding: 0.5em 0 0 0.5em;
+}
+ul {
+    list-style-type:none;
+    padding:0;
+    display: flex;
+    float: right;
+    margin: auto;
+}
+li {
+    display:inline-block;
+    float: right;
+    margin-right: 1px;
+    margin-top:2em;
+}
+li a {
+    display:block;
+    min-width:140px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: black;
+    text-decoration: none;
+}
+li:hover a {
+    background-color: #ddd;
+    color: black;
+}
+
+.show-menu {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    color: #fff;
+    background: #19c589;
+    text-align: center;
+    padding: 10px 0;
+    display: none;
+}
+input[type=checkbox]{
+    display: none;
+}
+
+input[type=checkbox]:checked ~ #menu{
+    display: block;
+}
+@media screen and (max-width : 760px){
+    ul {
+        position: static;
+        display: none;
+    }
+    li {
+        margin-bottom: 1px;
+    }
+    
+    ul li, li a {
+        width: 100%;
+        margin: 0;
+    }
+    .show-menu {
+        display:block;
+    }
+    .user, .profile, .userform, .question, .login_contents, .mypages{
+        flex-direction: column !important;
+    }
+    .profile{
+        background-color: white !important;
+    }
+}
+
 .container{
     background:rgba(0,0,0,0.6);
     width: 100%;
     height: 100%;
-    padding: 0;
+    padding-bottom: 10%;
     margin:0;
 }
 .content{
     background-color: white;
 }
-.topnavbar {
-    overflow: hidden;
-    background-color: aqua;
-}
-p{
-    font-size: 1.5em;
-    color: black;
-    text-align:center;
-}
-.question p{
-    font-size: 2em;
-    color: black;
-    text-align:center;
-    font-weight: bold;
-}
-
-.topnavbar h {
-    float: left;
-    font-size: 3em;
-    padding: 0.5em ;
-    
-}
-.container h{
-    font-size: 2em;
-    color: white;
-}
-
-.topnavbar a {
-    float: right;
-    color: #141313;
-    padding: 1.5em ;
-    text-decoration: none;
-    font-size: 1.5em;
-}
-
-.topnavbar a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-.footer{
-    position: fixed;
-    clear: both;
-    width: 100%;
-    font-size: 1.5em;
-    bottom: 0;
-    background-color: aqua;
-    padding: 0.4em;
-}
-
-
 .container .link{
     color: aqua;
-    display: inline-block;
-    padding: 3em;
     font-size: 2em;
-    border-radius: 0.5em;
-    width: 30%;
+    width: 40%;
     
 }
-.rightsection{
-    max-width: 20%;
-    margin-top: 3%;
-    margin-left: 60%;
-    padding: 5em;
-    border-radius: 1em;
-    border:0.2em solid #141313;
-    
-}
-.side_content{
-    width: 55%;
-    margin-top: 3%;
-    margin-left: 50%;
-    padding: 0.1em;
-    border-radius: 1em;
-    border:0.1em solid #141313;
+.mypages{
+    display: inline-flex;
+    justify-content: space-between; 
+    margin-top: 5%;
+    flex-direction: row;
+    /* flex-start center flex-end space-around space-between */
 
 }
 .userform{
-    display: inline-block;
+    /* display: inline-block; */
     border-style: ridge;
-    width: 30%;
+    flex: 1;
     border-radius:0.5em;
     text-align: left;
     padding: 1em;
     color: aqua;
-    font-size: 1.5em;
+    font-size: 1em;
+    flex-direction: column; 
+}
+.container h{
+    font-size: 2em;
+    color: aqua;
+}
+.login_contents{
+    flex-direction: column;
+    flex:1;
     margin-top: 5%;
-    
-}
-.loginpage{
-    float: right;
-    margin-right: 10%;
-
-}
-.form-control{
-    margin-bottom: 1em;
-    width: 70%;
-    border-radius:0.5em;
-    height:5%;
-    padding-left: 0.5em;
-}
-label { 
-    display: block; 
+    color: aqua;
 }
 
 button{
@@ -151,20 +161,74 @@ button{
     width:10%;
     float: right;
 }
+.form-control{
+    margin-bottom: 1em;
+    width: 70%;
+    border-radius:0.5em;
+    height:5%;
+    padding-left: 0.5em;
+}
+label { 
+    display: block; 
+}
 
-
+.questions, .comments, .top_meet{
+    margin: 2em 1em 1em 0.5em;
+    font-size: 1em;
+    border-radius: 1em;
+    background-color: white;
+    color: black;
+    flex: 1;
+}
+.posts{
+    text-align: left;
+    line-height: 2.5em;
+    font-size: 0.9em; 
+    margin: 0.5;
+}
+.pflpg{
+    color: black;
+}
+#admin{
+    color: black;
+    font-size: 1.5em;
+}
+.adm{
+    margin: 3px;
+}
+.admin_image{
+    width:45%;
+    height: 35%;
+    /* margin-left: 10%;
+    float: left; */
+    border-radius: 50%;
+}
+.meets{
+    font-size: 1em;
+    width: 30%;
+    margin-left: 30%;
+    color: black;
+}
+.saying{
+    font-size: 1.5em;
+    color: aqua;
+}
+.userform a{
+    color: aqua;
+}
+.tag{
+    width: 30%;
+}
+.btn_full{
+    width: 100%;
+    float: right;
+}
 .allmeetups  {
     width: 100%;
     float: left; 
     margin: 1em 1em 10em 5em;
     
 }
-.section{
-    float: left;
-    padding: 0.5em;
-    text-align: left;
-    width: 40%;
-} 
 .meetup{
     float: left;
     padding: 0.5em;
@@ -173,7 +237,7 @@ button{
     width: 90%;
 } 
 .allmeetups p{
-    font-size: 2em;
+    font-size: 1.5em;
     padding: 0;
     margin: 0;
 }
@@ -183,23 +247,64 @@ button{
     float: left;
     margin: 0.5em;
 }
+.img_details{
+    margin-top: 1em;
+    font-size: 1em;
+}
+.register{
+    display: inline-block;
+    border-style: ridge;
+    width: 50%;
+    border-radius:0.5em;
+    text-align: left;
+    padding: 1em;
+    color: aqua;
+    font-size: 1em;
+    margin-top: 5%;
+}
+
+
+/* user profile */
+.user{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 30%;
+}
+.user_image{
+    flex:1;
+    height:30%;
+    border-radius: 50%;
+}
+.profilepg{
+    flex: 1;
+    color: white;
+}
+.profile{
+    display: flex;
+    flex-direction: row
+}
+.question{
+    display: inline-flex;
+    flex-direction: row;
+    text-align: center;
+}
+.section{
+    padding: 0.5em;
+    text-align: left;
+    
+} 
+.section .img_details{
+    margin-top: 1em;
+    font-size: 1em;
+}
 .section .img{
     width: 60%;
     height:40%;
-    float: left;
     margin: 0.5em;
 }
-.img_details{
-    margin-top: 1em;
-    font-size: 1.5em;
-}
-.section .img_details{
-    margin-top: 1em;
-    font-size: 1.5em;
-    clear: left;
-}
 .details{
-    font-size: 1.5em;
+    font-size: 1em;
     line-height: 2em;
     text-align: left;
     padding: 0.5em;
@@ -217,18 +322,10 @@ textarea{
     width:100%;
     height:10%;
 }
-.question{
-    padding: 0.5em;
-    text-align: center;
-    width: 90%;
+.health,.side_content{
+    flex: 1;
 }
-.admin_content{
-    width: 90%;
-    border:0.1em solid #141313;
-    clear: both;
-    margin: auto;
-    margin-top: 20em;
-}
+/* hide div */
 #cont {
     display: none; 
     padding-left : 10%
@@ -250,90 +347,15 @@ textarea{
 .comments3:focus + #cont3 {
     display: block;
 }
-
-.image{
-    width: 10%;
-    height:20%;
-    margin-left: 10%;
-    float: left;
-    border-radius: 50%;
-}
-.user_image{
-    margin-left: 40%;
-
-}
-.admin_image{
-    width:20%;
-    height: 35%;
-    margin-left: 10%;
-    float: left;
-    border-radius: 50%;
-}
-.profilepg{
-    text-align: left;
-    float: left;
-    width:20%;
-
-}
-.profile, .user{
-    clear: both;
-}
-.admin{
-    margin-top: 1em;
-    margin-bottom: 0;
-}
-.profile, .profilepg p{
-    color: aqua;
-}
-.profile{
-    width: 100%;
-    margin: 5%;
-}
-.questions, .comments, .top_meet{
-    width: 30%;
-    float: left;
-    margin: 2em 1em 1em 0.5em;
-    font-size: 1.5em;
-    border-radius: 1em;
-    background-color: white;
-    color: black;
-}
-.posts{
-    text-align: left;
-    line-height: 2.5em;
-    font-size: 0.9em; 
-    margin: 0.5;
-}
-.user .profilepg p{
-    /* color: black; */
-    font-size: 1.5em;
-    
-}
-.pflpg{
-    font-size: 1.5em;
-    text-align: left;
-    float: left;
-    width:20%;
-    margin-top: 1em;
-}
-#admin{
-    color: black;
+.text{
     font-size: 2em;
 }
-.meets{
-    width: 30%;
-    float: right;
-    text-align: left;
-    padding: 1em;
-    font-size: 1.5em;
-}
-.saying{
-    font-size: 1.5em;
-    color: aqua;
-}
-.userform a{
-    color: aqua;
-}
-.tag{
-    width: 30%;
+.footer{
+    position: fixed;
+    clear: both;
+    width: 100%;
+    font-size: 1em;
+    bottom: 0;
+    background-color: aqua;
+    padding: 0.4em;
 }

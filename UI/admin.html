@@ -9,22 +9,37 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         </head>
         <body >
-            <div class="topnavbar">
-                <h>Questioner</h>
-                <a href="index.html">Home</a>
-                <a href="index.html">Log out</a>
+            <div class="nav">
+                <div class="menu">
+                    <label for="show-menu" class="show-menu">Show Menu</label>
+                    <input type="checkbox" id="show-menu" role="button">
+                    <div class="title">
+                        Questioner
+                    </div>
+                    <ul id="menu">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="index.html">Log out</a>
+                            
+                        </li>
+                    </ul>
+                </div>
             </div>
                 
             <div class="container content">
                 <h id="admin">Admin's Page</h>
-                <div class="user admin"> 
-                    <img class=" admin_image" src="images/profile.jpg">
-                    <div class="pflpg"><br>
-                        Fullname : Jackline Gitari<br>
-                        Email : jackie@gmail.com
+                <div class="mypages adm"> 
+                    <div class="login_contents">
+                        <img class=" admin_image" src="images/profile.jpg">
+                        <div class="pflpg"><br>
+                            Fullname : Jackline Gitari<br>
+                            Email : jackie@gmail.com
+                        </div>
                     </div>
-                    <div class="meets">
-                        <form>
+                    <div class="meets userform">
+                        <form >
                             Add a meetup<br>
                             <input class="form-control " type="text" id="title" name="title" placeholder="Title" />
                             <input class="form-control" type="datetime-local" id="time" name="time" ><br>
@@ -34,50 +49,49 @@
                             &nbsp;&nbsp;&nbsp;
                             <input type="file" name="image" ><br>
                             <br>
-                            Summary<textarea></textarea>
+                            Summary<br><textarea></textarea>
                             <button class="admsuccess success " type="submit" name="submit"> Add Meetup</button>
                         </form>
-
                     </div>
-                </div>
+                </div> 
                 <div class="allmeetups"> 
                 
-                        <p>Available Meetups</p>
-                        <div class="meetup">
-                            <img class="img" src="images/health.jpg">
-                            <div class="img_details">
-                                <b>Title :</b> Health and wellness<br>
-                                <b>Meetup Added by:</b> Mr Chris <br>
-                                <b>Meetup Time :</b> 16-2-2019 2.00pm<br>
-                                <b>Location :</b> Whatsapp
-                                <br><br>
-                                <b>Brief summary</b><br>
-                                The meetup is set to discuss issues to do with human health and how to live well.
-                                <br>
-                                5 posted questions &nbsp;&nbsp;
-                                14 likes &nbsp;&nbsp;  5 dislikes 
-                                <button class="alert adm_alert" type="submit" name="delete"> Delete Meetup</button>
-                            </div>
+                    <p>Available Meetups</p>
+                    <div class="meetup">
+                        <img class="img" src="images/health.jpg">
+                        <div class="img_details">
+                            <b>Title :</b> Health and wellness<br>
+                            <b>Meetup Added by:</b> Mr Chris <br>
+                            <b>Meetup Time :</b> 16-2-2019 2.00pm<br>
+                            <b>Location :</b> Whatsapp
+                            <br><br>
+                            <b>Brief summary</b><br>
+                            The meetup is set to discuss issues to do with human health and how to live well.
+                            <br>
+                            5 posted questions &nbsp;&nbsp;
+                            14 likes &nbsp;&nbsp;  5 dislikes 
+                            <button class="alert adm_alert" type="submit" name="delete"> Delete Meetup</button>
                         </div>
-                        <div class="meetup">
-                            <img class="img" src="images/money.jpg">
-                            <div class="img_details">
-                                <b>Title :</b> World's Economy<br>
-                                <b>Meetup Added by:</b> Miss Grace <br>
-                                <b>Meetup Time :</b> 20-7-2019 2.00pm<br>
-                                <b>Location :</b> Garden City, Nairobi
-                                <br><br>
-                                <b>Brief summary</b><br>
-                                The meetup is set to discuss issues to do with today's economy and how 
-                                investors can remain competitive in the market.
-                                <br>
-                                4 posted questions &nbsp;&nbsp;
-                                4 likes &nbsp;&nbsp;  1dislikes
-                                <button class="alert adm_alert" type="submit" name="delete"> Delete Meetup</button>
-                            </div>
-                        </div>
-                       
                     </div>
+                    <div class="meetup">
+                        <img class="img" src="images/money.jpg">
+                        <div class="img_details">
+                            <b>Title :</b> World's Economy<br>
+                            <b>Meetup Added by:</b> Miss Grace <br>
+                            <b>Meetup Time :</b> 20-7-2019 2.00pm<br>
+                            <b>Location :</b> Garden City, Nairobi
+                            <br><br>
+                            <b>Brief summary</b><br>
+                            The meetup is set to discuss issues to do with today's economy and how 
+                            investors can remain competitive in the market.
+                            <br>
+                            4 posted questions &nbsp;&nbsp;
+                            4 likes &nbsp;&nbsp;  1dislikes
+                            <button class="alert adm_alert" type="submit" name="delete"> Delete Meetup</button>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
             <div class="footer">
                     Copyright©2019
