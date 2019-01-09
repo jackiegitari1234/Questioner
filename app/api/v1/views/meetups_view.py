@@ -1,8 +1,9 @@
 from app.api.v1 import vers1 as v1
+from app.api.v1.models.meetups_model import meetup
 from flask import jsonify,request
 
 @v1.route('/meetups', methods=['POST'])
-def reg_validation():
+def add_meetup():
 
     userdata = request.get_json()
 
@@ -17,7 +18,9 @@ def reg_validation():
     topic = userdata['topic']
     location = userdata['location']
     happeningOn = userdata['happeningOn']
+    tags = userdata['tags']
 
-    return jsonify({"status": 201, "message": "the meet up {} was added successfully".format(topic)}), 400
+    Meetup = meetup(topic,location,happeningOn,tags).addMeetup()
+    return jsonify({"status": 201, "data": Meetup}), 400
 
 
