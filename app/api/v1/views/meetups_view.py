@@ -39,7 +39,7 @@ def add_rsvp(meetup_id):
         return jsonify({"status": 400, "message": "Only data of Application/JSON expected"}), 400
     
     # Check for empty inputs
-    if not all(field in userdata for field in ["response"]):
+    if not all(field in userdata for field in ["user","response"]):
         return jsonify({"status": 400, "message": "Please enter a response"}), 400 
 
     meetup = meetup_id
