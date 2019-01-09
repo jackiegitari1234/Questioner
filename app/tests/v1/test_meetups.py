@@ -49,18 +49,16 @@ class TestMeetups(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
 
-    #Test to display a meetup record
-    def test_get_specific_meetup(self):
-        #creates meetupf irst
-        createResponse = self.client.post('api/v1/meetups',data=json.dumps(self.meetup2),content_type="application/json")
-        createResult = json.loads(createResponse.data)
-        data = createResult["data"]
-        meetup_id = data["id"]
+        #Test to display a meetup record
+        def test_get_specific_meetup(self):
+            #creates meetup first
+            
+            data = result["data"]
+            meetup_id = data["id"]
 
-        response = self.client.get('api/v1/meetups/1')
-        result = json.loads(response.data)
-        # self.assertTrue(result["data"])
-        self.assertEqual(None, result)
+            response2 = self.client.get('api/v1/meetups/meetup_id')
+            result2 = json.loads(response2.data)
+            self.assertTrue(result2["data"])
 
         
 
