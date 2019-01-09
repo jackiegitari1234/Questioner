@@ -17,3 +17,22 @@ class meetup(object):
         }
         meetups.append(meetup)
         return meetup
+
+
+RSVPs = []
+class rsvp(object):
+    def __init__(self, meetup=None, user=None, response=None):
+        self.rsvpId = len(RSVPs)+1
+        self.user = user
+        self.response = response
+        self.meetup = meetup
+
+    def addRsvp(self):
+        rsvp = {
+            "id" : self.rsvpId,
+            "user": self.user,
+            "response":self.response,
+            "meetup":self.meetup
+        }
+        RSVPs.append(rsvp)
+        return rsvp

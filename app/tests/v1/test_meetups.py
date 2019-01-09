@@ -61,14 +61,14 @@ class TestMeetups(unittest.TestCase):
         
         data = result["data"]
         meetup_id = data["id"]
-        meetup_id = int(meetup_id)
+        meetupid = int(meetup_id)
 
 
-    def test_get_all_meetups(self):
+    def test_get_upcoming_meetups(self):
         getresponse = self.client.get('api/v1/meetups/upcoming')
         self.assertEqual(getresponse.status_code, 200)
 
-     # test rsvp json data 
+    #  test rsvp json data 
     def test_post_rsvp(self):
         response = self.client.post('api/v1/rsvp')
         result = json.loads(response.data)
@@ -83,7 +83,9 @@ class TestMeetups(unittest.TestCase):
         self.assertEqual(response.status_code, 400)
 
     def test_valid_rsvp_details(self):
-        response = self.client.post('api/v1/rsvp',data=json.dumps(self.rsvp2),content_type="application/json")
+        response2 = self.client.post('api/v1/meetups',data=json.dumps(self.meetup2),content_type="application/json")
+        
+        response = self.client.post('api/v1/meetup/1/rsvp',data=json.dumps(self.rsvp2),content_type="application/json")
         result = json.loads(response.data)
         self.assertTrue(result["data"])
         self.assertEqual(response.status_code, 200)
