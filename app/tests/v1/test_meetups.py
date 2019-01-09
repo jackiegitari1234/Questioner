@@ -60,10 +60,10 @@ class TestMeetups(unittest.TestCase):
             self.assertTrue(result2["data"])
 
         def test_get_all_meetups(self):
-
             getresponse = self.client.get('api/v1/meetups')
             getresult = json.loads(getresponse.data)
             self.assertTrue(getresult["data"])
+
 
         
 
