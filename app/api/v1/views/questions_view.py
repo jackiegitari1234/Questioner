@@ -12,7 +12,7 @@ def add_question(id,user=1):
     
     # Check for empty inputs
     if not all(field in question_data for field in ["title","question"]):
-        return jsonify({"status": 400, "message": "Please enter a question"})
+        return jsonify({"status": 400, "message": "Please enter a question and it's title"})
 
     title = question_data ['title']
     questn = question_data ['question']
