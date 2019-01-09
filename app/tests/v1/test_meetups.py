@@ -18,9 +18,11 @@ class TestMeetups(unittest.TestCase):
             "tags" : "['php','java']"
         }
         self.rsvp1 = {
+            "user" : "1"
         }
         self.rsvp2 = {
-            "response" : "yes"
+            "response" : "yes",
+            "user" : "1"
         }
     """ Destroy all tests"""
     def tearDown(self):
@@ -61,30 +63,31 @@ class TestMeetups(unittest.TestCase):
         
         data = result["data"]
         meetup_id = data["id"]
-        meetup_id = int(meetup_id)
+        meetupid = int(meetup_id)
 
 
-    def test_get_all_meetups(self):
+    def test_get_upcoming_meetups(self):
         getresponse = self.client.get('api/v1/meetups/upcoming')
         self.assertEqual(getresponse.status_code, 200)
 
-     # test rsvp json data 
+    #  test rsvp json data 
     def test_post_rsvp(self):
-        response = self.client.post('api/v1/rsvp')
+        response = self.client.post('api/v1/meetups/1/rsvps')
         result = json.loads(response.data)
         self.assertEqual(result["message"],"Only data of Application/JSON expected")
         self.assertEqual(response.status_code, 400)
 
     # Test empty fields
     def test_empty_rsvp_fields(self):
-        response = self.client.post('api/v1/rsvp',data=json.dumps(self.rsvp1),content_type="application/json")
+        response = self.client.post('api/v1/meetups/1/rsvps',data=json.dumps(self.rsvp1),content_type="application/json")
         result = json.loads(response.data)
-        self.assertEqual(result["message"],"All fields are required")
+        self.assertEqual(result["message"],"Please enter a response")
         self.assertEqual(response.status_code, 400)
 
     def test_valid_rsvp_details(self):
-        response = self.client.post('api/v1/rsvp',data=json.dumps(self.rsvp2),content_type="application/json")
+        response2 = self.client.post('api/v1/meetups',data=json.dumps(self.meetup2),content_type="application/json")
+        
+        response = self.client.post('api/v1/meetups/1/rsvps',data=json.dumps(self.rsvp2),content_type="application/json")
         result = json.loads(response.data)
-        self.assertTrue(result["data"])
         self.assertEqual(response.status_code, 200)
 
