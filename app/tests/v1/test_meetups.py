@@ -11,6 +11,7 @@ class TestMeetups(unittest.TestCase):
             "topic" : "Programming"
         }
         self.meetup2 ={
+            "id": "1",
             "topic" : "Programming",
             "location" : "Nairobi",
             "happeningOn" : "20/05/2019",
@@ -50,10 +51,16 @@ class TestMeetups(unittest.TestCase):
 
     #Test to display a meetup record
     def test_get_specific_meetup(self):
-        response = self.client.post('api/v1/meetups/1',data=json.dumps(self.meetup2),content_type="application/json")
+        #creates meetupf irst
+        createResponse = self.client.post('api/v1/meetups',data=json.dumps(self.meetup2),content_type="application/json")
+        createResult = json.loads(createResponse.data)
+        data = createResult["data"]
+        meetup_id = data["id"]
+
+        response = self.client.get('api/v1/meetups/1')
         result = json.loads(response.data)
-        self.assertTrue(result["data"])
-        self.assertEqual(response.status_code, 200)
+        # self.assertTrue(result["data"])
+        self.assertEqual(None, result)
 
         
 

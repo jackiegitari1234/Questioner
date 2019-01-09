@@ -23,12 +23,12 @@ def add_meetup():
     Meetup = meetup(topic,location,happeningOn,tags).addMeetup()
     return jsonify({"status": 200, "data": Meetup})
 
-@v1.route('/meetups/<int:meetup_id>', methods=['POST'])
+@v1.route('/meetups/<int:meetup_id>', methods=['GET'])
 def get_meetup(meetup_id):
     meet = [meetup for meetup in meetups if meetup["id"] == meetup_id]
 
     if meet:
-        return jsonify({"status": 200})
+        return jsonify({"status": 200, "data": meetups})
     return jsonify({"status":400, "message": "Sorry no meetup with id {} found".format(meetup_id)}), 400
 
 

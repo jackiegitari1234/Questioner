@@ -9,6 +9,7 @@ class quiz(object):
 
     def addQuestion(self):
         Question = {
+            "id" : self.questionId,
             "user": self.user,
             "meetup":self.meetup,
             "title":self.title,
