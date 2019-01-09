@@ -20,5 +20,10 @@ def add_question(id,user=1):
     
     Qstn = quiz(title,questn,user,id).addQuestion()
     return jsonify({"status": 201, "data": Qstn})
+
+@v1.route('/meetup/<int:id>/question', methods=['POST'])
+def votes(id):
+    votes_data = request.get_json()
+    vote =votes_data['yourVote']
    
 
