@@ -42,3 +42,14 @@ class TestMeetups(unittest.TestCase):
         result = json.loads(response.data)
         self.assertTrue(result["data"])
         self.assertEqual(response.status_code, 200)
+
+
+    #Test to display a meetup record
+    def test_get_specific_meetup(self):
+        response = self.client.post('api/v1/meetups/1',data=json.dumps(self.meetup2),content_type="application/json")
+        result = json.loads(response.data)
+        self.assertTrue(result["data"])
+        self.assertEqual(response.status_code, 200)
+
+        
+
