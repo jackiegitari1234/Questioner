@@ -51,3 +51,5 @@ class TestMeetups(unittest.TestCase):
         self.assertTrue(result["data"])
         self.assertEqual(response.status_code, 200)
 
+        
+
