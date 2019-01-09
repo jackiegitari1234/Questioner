@@ -16,6 +16,10 @@ class TestMeetups(unittest.TestCase):
             "happeningOn" : "20/05/2019",
             "tags" : "['php','java']"
         }
+    """ Destroy all tests"""
+    def tearDown(self):
+        self.app.testing = False
+        self.app = None
 
 
     def test_development_environment(self):

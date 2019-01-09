@@ -1,5 +1,5 @@
 from app.api.v1 import vers1 as v1
-from app.api.v1.models.meetups_model import meetup
+from app.api.v1.models.meetups_model import meetup,meetups
 from flask import jsonify,request
 
 @v1.route('/meetups', methods=['POST'])
@@ -22,5 +22,14 @@ def add_meetup():
 
     Meetup = meetup(topic,location,happeningOn,tags).addMeetup()
     return jsonify({"status": 200, "data": Meetup})
+
+@v1.route('/meetups/<int:meetup_id>', methods=['POST'])
+def get_meetup(meetup_id):
+    meet = [meetup for meetup in meetups if meetup["id"] == meetup_id]
+
+    if meet:
+        return jsonify({"status": 200})
+    return jsonify({"status":400, "message": "Sorry no meetup with id {} found".format(meetup_id)}), 400
+
 
 
