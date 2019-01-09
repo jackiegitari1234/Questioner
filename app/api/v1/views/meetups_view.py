@@ -24,12 +24,10 @@ def add_meetup():
     return jsonify({"status": 200, "data": Meetup})
 
 @v1.route('/meetups/<int:meetup_id>', methods=['GET'])
-def get_meetup(meetup_id):
-    meet = [meetup for meetup in meetups if meetup["id"] == meetup_id]
+def get_meetup(meetup_id):    
+    return jsonify({"status": 200, "data": meetup})
 
-    if meet:
-        return jsonify({"status": 200, "data": meetups})
-    return jsonify({"status":400, "message": "Sorry no meetup with id {} found".format(meetup_id)}), 400
-
-
+@v1.route('/meetups/upcoming', methods=['GET'])
+def all_meetup():
+    return jsonify({"status": 200, "data": meetups})
 

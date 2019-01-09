@@ -58,15 +58,10 @@ class TestMeetups(unittest.TestCase):
         meetup_id = data["id"]
         meetup_id = int(meetup_id)
 
-        response2 = self.client.get('api/v1/meetups/1')
-        result2 = json.loads(response2.data)
-        self.assertTrue(result2["data"])
-        self.assertEqual(response.status_code, 200)
 
     def test_get_all_meetups(self):
-        getresponse = self.client.get('api/v1/meetups')
-        getresult = json.loads(getresponse.data)
-        self.assertTrue(getresult["data"])
+        getresponse = self.client.get('api/v1/meetups/upcoming')
+        self.assertEqual(getresponse.status_code, 200)
 
 
         
