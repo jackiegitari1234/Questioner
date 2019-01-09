@@ -51,7 +51,6 @@ class TestMeetups(unittest.TestCase):
 
         #Test to display a meetup record
         def test_get_specific_meetup(self):
-            #creates meetup first
             
             data = result["data"]
             meetup_id = data["id"]
@@ -59,6 +58,12 @@ class TestMeetups(unittest.TestCase):
             response2 = self.client.get('api/v1/meetups/meetup_id')
             result2 = json.loads(response2.data)
             self.assertTrue(result2["data"])
+
+        def test_get_all_meetups(self):
+
+            getresponse = self.client.get('api/v1/meetups')
+            getresult = json.loads(getresponse.data)
+            self.assertTrue(getresult["data"])
 
         
 
