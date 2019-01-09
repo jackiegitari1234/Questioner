@@ -14,6 +14,10 @@ class TestQuestions(unittest.TestCase):
             "title" : "Tests",
             "question" : "What are tests"
         }
+    """ Destroy all tests"""
+    def tearDown(self):
+        self.app.testing = False
+        self.app = None
 
     def test_development_environment(self):
         self.assertTrue(create_app.config['DEBUG'] is True)

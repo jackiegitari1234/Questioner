@@ -11,11 +11,16 @@ class TestMeetups(unittest.TestCase):
             "topic" : "Programming"
         }
         self.meetup2 ={
+            "id": "1",
             "topic" : "Programming",
             "location" : "Nairobi",
             "happeningOn" : "20/05/2019",
             "tags" : "['php','java']"
         }
+    """ Destroy all tests"""
+    def tearDown(self):
+        self.app.testing = False
+        self.app = None
 
 
     def test_development_environment(self):
@@ -44,12 +49,16 @@ class TestMeetups(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
 
-    #Test to display a meetup record
-    def test_get_specific_meetup(self):
-        response = self.client.post('api/v1/meetups/1',data=json.dumps(self.meetup2),content_type="application/json")
-        result = json.loads(response.data)
-        self.assertTrue(result["data"])
-        self.assertEqual(response.status_code, 200)
+        #Test to display a meetup record
+        def test_get_specific_meetup(self):
+            #creates meetup first
+            
+            data = result["data"]
+            meetup_id = data["id"]
+
+            response2 = self.client.get('api/v1/meetups/meetup_id')
+            result2 = json.loads(response2.data)
+            self.assertTrue(result2["data"])
 
         
 

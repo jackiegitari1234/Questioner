@@ -9,9 +9,11 @@ class meetup(object):
 
     def addMeetup(self):
         meetup = {
+            "id" : self.meetupId,
             "topic": self.topic,
             "location":self.location,
             "happeningOn":self.happeningOn,
             "tags":self.tags
         }
+        meetups.append(meetup)
         return meetup
