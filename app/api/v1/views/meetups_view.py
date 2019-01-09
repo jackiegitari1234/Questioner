@@ -21,6 +21,6 @@ def add_meetup():
     tags = userdata['tags']
 
     Meetup = meetup(topic,location,happeningOn,tags).addMeetup()
-    return jsonify({"status": 201, "data": Meetup}), 400
+    return jsonify({"status": 200, "data": Meetup})
 
 
