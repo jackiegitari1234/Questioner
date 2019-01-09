@@ -31,5 +31,6 @@ def get_meetup(meetup_id):
         return jsonify({"status": 200, "data": meetups})
     return jsonify({"status":400, "message": "Sorry no meetup with id {} found".format(meetup_id)}), 400
 
-
+@v1.route('/meetups', methods=['GET'])
+def all_meetup():
 
