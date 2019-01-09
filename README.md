@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/jackiegitari1234/Questioner.svg?branch=develop)](https://travis-ci.org/jackiegitari1234/Questioner) [![Coverage Status](https://coveralls.io/repos/github/jackiegitari1234/Questioner/badge.svg)](https://coveralls.io/github/jackiegitari1234/Questioner)
 # Questioner 
 
 # challenge 2 : API
