@@ -10,6 +10,13 @@ class TestMeetups(unittest.TestCase):
         self.meetup1 ={
             "topic" : "Programming"
         }
+        self.meetup2 ={
+            "topic" : "Programming",
+            "location" : "Nairobi",
+            "happeningOn" : "20/05/2019",
+            "tags" : "['php','java']"
+        }
+
 
     def test_development_environment(self):
         self.assertTrue(create_app.config['DEBUG'] is True)
@@ -22,9 +29,16 @@ class TestMeetups(unittest.TestCase):
         self.assertEqual(result["message"],"Only Application/JSON input expected")
         self.assertEqual(response.status_code, 400)
 
-    """ Test empty fields"""
+    # Test empty fields
     def test_submit_empty_meetup_fields(self):
         response = self.client.post('api/v1/meetups',data=json.dumps(self.meetup1),content_type="application/json")
         result = json.loads(response.data)
         self.assertEqual(result["message"],"Please fill in all the required input fields")
         self.assertEqual(response.status_code, 400)
+
+    #Test valid input
+    def test_valid_details(self):
+        response = self.client.post('api/v1/meetups',data=json.dumps(self.meetup2),content_type="application/json")
+        result = json.loads(response.data)
+        self.assertTrue(result["data"])
+        self.assertEqual(response.status_code, 200)
