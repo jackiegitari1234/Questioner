@@ -41,3 +41,20 @@ class TestQuestions(unittest.TestCase):
         response = self.client.post('api/v1/meetup/1/question',data=json.dumps(self.question2),content_type="application/json")
         result = json.loads(response.data)
         self.assertTrue(result["data"])
+
+    # test json data 
+    def test_downvotes(self):
+        response = self.client.post('api/v1/meetup/1/question',data=json.dumps(self.question2),content_type="application/json")
+        result = json.loads(response.data)
+
+        response = self.client.post('api/v1/questions/1/downvote')
+        self.assertEqual(response.status_code, 200)
+
+    # test json data 
+    def test_upvotesvotes(self):
+        response = self.client.post('api/v1/meetup/1/question',data=json.dumps(self.question2),content_type="application/json")
+        result = json.loads(response.data)
+        
+        response = self.client.post('api/v1/questions/1/upvotevote')
+        self.assertEqual(response.status_code, 200)
+
