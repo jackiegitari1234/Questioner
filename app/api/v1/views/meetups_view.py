@@ -23,7 +23,7 @@ def add_meetup():
     Meetup = meetup(topic,location,happeningOn,tags).addMeetup()
     return jsonify({"status": 200, "data": Meetup})
 
-@v1.route('/meetups/<int:meetup_id>', methods=['GET'])
+@v1.route('/meetups/<int:meetup_id>/rsvps', methods=['GET'])
 def get_meetup(meetup_id):    
     return jsonify({"status": 200, "data": meetup})
 
