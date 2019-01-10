@@ -1,5 +1,5 @@
 from app.api.v1 import vers1 as v1
-from app.api.v1.models.questions_model import quiz
+from app.api.v1.models.questions_model import quiz,questions
 from flask import jsonify,request
 
 @v1.route('/meetup/<int:id>/question', methods=['POST'])
@@ -20,5 +20,14 @@ def add_question(id,user=1):
     
     Qstn = quiz(title,questn,user,id).addQuestion()
     return jsonify({"status": 201, "data": Qstn})
-   
+
+@v1.route('/questions/<int:id>/upvote', methods=['POST'])
+def upvotes(id):
+    Quizn = quiz().upvotes(id)
+    return jsonify({"status": 201, "data": Quizn})
+
+@v1.route('/questions/<int:id>/downvote', methods=['POST'])
+def dpwnvotes(id):
+    Quizn = quiz().downvotes(id)
+    return jsonify({"status": 201, "data": Quizn})
 
