@@ -8,11 +8,11 @@ Required Method       | EndPoint       | Goal |
 ------------- | ------------- | ---------------
 POST  | /api/v1/meetups  | Post a new meetup record   |
 GET  | /api/v1/meetups/<int:meetup_id>  | Get a specific meetup   |
-GET  | /api/v1/meetups/upcoming   | Get all upcoming meetup records   | 
+GET  | /api/v1/meetups/upcoming   | Get all upcoming meetup records   |
 POST  | /api/v1/meetup/<int:meetup_id>/question | Create a question for a specific meetup.   |
 PUT | /api/v1/questions/<int:question_id>/upvote | Adds votes by one |
 PUT | /api/v1/questions/<int:question_id>/downvote | Decreases votes by one  |
-POST | /api/v1/meetups/<int:meetup_id>/rsvps | Create a meetup RSVP. 
+POST | /api/v1/meetups/<int:meetup_id>/rsvps | Create a meetup RSVP
 
 ## Project Overview
 This is a project that is used by orgarnizers of various meetups to plan on which questions to be answered during the meetups. The information is collected from users of the Questioner. The users can register, login and upvote or downvote a question so that the total number of upvotes and downvotes can be collected and decisions are made.
