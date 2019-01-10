@@ -1,7 +1,18 @@
-[![Build Status](https://travis-ci.org/jackiegitari1234/Questioner.svg?branch=develop)](https://travis-ci.org/jackiegitari1234/Questioner) [![Coverage Status](https://coveralls.io/repos/github/jackiegitari1234/Questioner/badge.svg)](https://coveralls.io/github/jackiegitari1234/Questioner) <a href="https://codeclimate.com/github/jackiegitari1234/Questioner/maintainability"><img src="https://api.codeclimate.com/v1/badges/893ef8c583c4233df643/maintainability" /></a>
+[![Build Status](https://travis-ci.org/jackiegitari1234/Questioner.svg?branch=develop)](https://travis-ci.org/jackiegitari1234/Questioner) [![Coverage Status](https://coveralls.io/repos/github/jackiegitari1234/Questioner/badge.svg)](https://coveralls.io/github/jackiegitari1234/Questioner) [![Maintainability](https://api.codeclimate.com/v1/badges/893ef8c583c4233df643/maintainability)](https://codeclimate.com/github/jackiegitari1234/Questioner/maintainability)
 
 
 # Questioner : challenge 2
+
+## Endpoints
+Required Method       | EndPoint       | Goal |
+------------- | ------------- | ---------------
+POST  | /api/v1/meetups  | Post a new meetup record   |
+GET  | /api/v1/meetups/<int:meetup_id>  | Get a specific meetup   |
+GET  | /api/v1/meetups/upcoming   | Get all upcoming meetup records   | 
+POST  | /api/v1/meetup/<int:meetup_id>/question | Create a question for a specific meetup.   |
+PUT | /api/v1/questions/<int:question_id>/upvote | Adds votes by one |
+PUT | /api/v1/questions/<int:question_id>/downvote | Decreases votes by one  |
+POST | /api/v1/meetups/<int:meetup_id>/rsvps | Create a meetup RSVP. 
 
 ## Project Overview
 This is a project that is used by orgarnizers of various meetups to plan on which questions to be answered during the meetups. The information is collected from users of the Questioner. The users can register, login and upvote or downvote a question so that the total number of upvotes and downvotes can be collected and decisions are made.
@@ -22,11 +33,12 @@ This is a project that is used by orgarnizers of various meetups to plan on whic
 • `pip install pytest` to install pytest testing tool
 • `pytest` to run the automated tests
 
+
 ### Prerequisites
-- python 3.6
-- pip installed
-- Postman
-- Git
+- python 3.6 
+- pip installed - python package manager
+- Postman - for testing the end points
+- Git - for version control
 
 
 # This API includes
@@ -34,6 +46,9 @@ This is a project that is used by orgarnizers of various meetups to plan on whic
 - Git Version Control
 - Pytest
 
+## Acknowledgments
+- slack nbo-36
+- nbo-36 team 3 members
 
 
 ## Author
