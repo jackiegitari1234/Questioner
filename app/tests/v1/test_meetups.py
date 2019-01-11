@@ -30,9 +30,6 @@ class TestMeetups(unittest.TestCase):
         self.app = None
 
 
-    def test_development_environment(self):
-        self.assertTrue(create_app.config['DEBUG'] is True)
-        self.assertFalse(create_app is None)
 
     # test json data 
     def test_post_meetup(self):
