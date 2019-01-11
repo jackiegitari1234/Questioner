@@ -19,9 +19,7 @@ class TestQuestions(unittest.TestCase):
         self.app.testing = False
         self.app = None
 
-    def test_development_environment(self):
-        self.assertTrue(create_app.config['DEBUG'] is True)
-        self.assertFalse(create_app is None)
+    
 
     # test json data 
     def test_json_data(self):
