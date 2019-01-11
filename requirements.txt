@@ -21,7 +21,7 @@ pathlib2==2.3.3
 pluggy==0.8.0
 py==1.7.0
 pycrypto==2.6.1
-pygobject==3.26.1
+pygobject==3.27.0
 PyJWT==1.4.2
 pytest==4.0.2
 python-dotenv==0.10.1
