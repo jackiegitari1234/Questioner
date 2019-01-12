@@ -39,7 +39,8 @@ class TestMeetups(BaseTest):
             "email" : "jackie@gmail.com",
             "phoneNumber" : "+254707802693",
             "username" : "jackie",
-            "password" : "R#kajd23"
+            "password" : "R#kajd23",
+            "cpassword" : "R#kajd23"
         }
 
     # test json data 

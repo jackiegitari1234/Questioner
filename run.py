@@ -1,8 +1,8 @@
 '''ENTRY POINT OF THE APP'''
 from app import create_app
 
-config_name= 'development'
-app = create_app(config_name)
+configName= 'development'
+app = create_app(configName)
 
 @app.route('/')
 def index():
