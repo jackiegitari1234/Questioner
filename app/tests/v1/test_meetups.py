@@ -1,4 +1,4 @@
-import unittest, instance
+import unittest, Instance
 import json
 from app import create_app
 from .base_tests import BaseTest
@@ -7,7 +7,7 @@ app = create_app("testing")
 
 class TestMeetups(BaseTest):
     def setUp(self):
-        app.config.from_object(instance.config.TestingConfig)
+        app.config.from_object(Instance.config.TestingConfig)
         self.client = app.test_client()
 
         self.meetup1 ={
