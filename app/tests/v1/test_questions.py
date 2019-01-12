@@ -1,11 +1,14 @@
-import unittest
+import unittest,instance
 import json
 from app import create_app
+from .base_tests import BaseTest
 
-class TestQuestions(unittest.TestCase):
+app = create_app("testing")
+
+class TestQuestions(BaseTest):
     def setUp(self):
-        self.app = create_app
-        self.client = self.app.test_client()
+        app.config.from_object(instance.config.TestingConfig)
+        self.client = app.test_client()
 
         self.question1 ={
             "title" : "Tests"
@@ -14,10 +17,7 @@ class TestQuestions(unittest.TestCase):
             "title" : "Tests",
             "question" : "What are tests"
         }
-    """ Destroy all tests"""
-    def tearDown(self):
-        self.app.testing = False
-        self.app = None
+    
 
     
 

@@ -11,7 +11,7 @@ def add_meetup():
         return jsonify({"status": 400, "message": "Only Application/JSON input expected"}), 400
     
     # Check for empty inputs
-    if not all(field in userdata for field in ["topic", "location", "happeningOn"]):
+    if not all(field in userdata for field in ["topic", "location", "happeningOn","tags"]):
         return jsonify({"status": 400, "message": "Please fill in all the required input fields"}), 400 
 
     
