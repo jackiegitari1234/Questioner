@@ -27,9 +27,6 @@ class TestMeetups(BaseTest):
             "response" : "yes",
             "user" : "1"
         }
-    """ Destroy all tests"""
-
-
 
     # test json data 
     def test_post_meetup(self):
