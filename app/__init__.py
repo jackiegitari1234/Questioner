@@ -14,4 +14,5 @@ def create_app(configName):
     app.register_blueprint(V1_questions)
     app.register_blueprint(V1_questions)
     app.register_blueprint(V1_auth)
+    app.config["SECRET_KEY"] = "hsgghcguyds"
     return app

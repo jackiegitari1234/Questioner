@@ -1,6 +1,7 @@
 
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
+from app import create_app
 
 class inputs_validate():
 
@@ -29,6 +30,10 @@ class inputs_validate():
     def compare_password(self,password, cpassword):
         if password == cpassword:
             return True
+
+    # compare password stored and user input
+    def signin_password(self,hash_pwrd, password):
+        return check_password_hash(hash_pwrd,password)
 
 #hash the password
 def hash_password(password):
