@@ -48,6 +48,24 @@ class TestMeetups(BaseTest):
         self.user4 = {
             "email" : "jackie@gmail.com",
         }
+        self.user5 = {
+            "email" : "wronggmail.com",
+            "password" : "wrong"
+        }
+        self.user6 = {
+            "email" : "wrong@gmail.com",
+            "password" : "wrong"
+        }
+        self.user7 = {
+            "email" : "jackie@gmail.com",
+            "password" : "wrong"
+        }
+        self.user5 = {
+            "email" : "jackie@gmail.com",
+            "password" : "R#kajd23"
+        }
+
+
 
         '''SIGN UP'''
 
@@ -98,3 +116,32 @@ class TestMeetups(BaseTest):
         result = json.loads(response.data)
         self.assertEqual(result["message"],"All fields are required")
         self.assertEqual(response.status_code, 400)
+
+    #invalid email
+    def test_login_invalid_email(self):
+        response = self.client.post('api/v1/signin',data=json.dumps(self.user5),content_type="application/json")
+        result = json.loads(response.data)
+        self.assertEqual(result["message"],"Please enter a valid email")
+        self.assertEqual(response.status_code, 400)
+
+    #Test wrong email
+    def test_login_wrong_email(self):
+        response = self.client.post('api/v1/signin',data=json.dumps(self.user6),content_type="application/json")
+        result = json.loads(response.data)
+        self.assertEqual(result["message"],"User not Found")
+        self.assertEqual(response.status_code, 404)
+
+    #Test wrong password
+    def test_login_wrong_password(self):
+        response = self.client.post('api/v1/signin',data=json.dumps(self.user7),content_type="application/json")
+        result = json.loads(response.data)
+        self.assertEqual(result["message"],"Input contained a wrong Password")
+        self.assertEqual(response.status_code, 400)
+
+    #generate token
+    def test_login_generate_token(self):
+        response = self.client.post('api/v1/signin',data=json.dumps(self.user8),content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        result = json.loads(response.data)
+        data = jwt.decode(result["token"], create_app.config["SECRET_KEY"], options={"verify_iat": False},algorithms="HS256")
+        self.assertEqual(data["email"],"me@gmail.com")
