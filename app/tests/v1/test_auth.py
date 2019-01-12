@@ -2,6 +2,7 @@ import unittest, Instance
 import json
 from app import create_app
 from .base_tests import BaseTest
+from flask_jwt import jwt
 
 app = create_app("testing")
 
@@ -60,7 +61,7 @@ class TestMeetups(BaseTest):
             "email" : "jackie@gmail.com",
             "password" : "wrong"
         }
-        self.user5 = {
+        self.user8 = {
             "email" : "jackie@gmail.com",
             "password" : "R#kajd23"
         }
@@ -143,5 +144,5 @@ class TestMeetups(BaseTest):
         response = self.client.post('api/v1/signin',data=json.dumps(self.user8),content_type="application/json")
         self.assertEqual(response.status_code, 200)
         result = json.loads(response.data)
-        data = jwt.decode(result["token"], create_app.config["SECRET_KEY"], options={"verify_iat": False},algorithms="HS256")
+        data = jwt.decode(result["token"], app.config["SECRET_KEY"], options={"verify_iat": False},algorithms="HS256")
         self.assertEqual(data["email"],"me@gmail.com")
