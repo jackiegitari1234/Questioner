@@ -1,6 +1,7 @@
 '''THIS IS THE GLUE'''
 
 from flask import Flask
+
 # local import
 from Instance.config import app_config
 from app.api.v1.views.meetups_view import v1 as V1_meetups
