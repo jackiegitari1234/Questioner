@@ -56,4 +56,23 @@ class TestMeetups(BaseTest):
         self.assertEqual(result["message"],"Please fill in all the required input fields")
         self.assertEqual(response.status_code, 400)
 
+    #Test register with invalid password
+    def test_signup_invalid_password(self):
+        response = self.client.post('api/v1/signup',data=json.dumps(self.user2),content_type="application/json")
+        result = json.loads(response.data)
+        self.assertEqual(result["message"],"Please enter a valid password")
+        self.assertEqual(response.status_code, 400)
+
+    #Test register with invalid email
+    def test_signup_invalid_email(self):
+        response = self.client.post('api/v1/signup',data=json.dumps(self.user3),content_type="application/json")
+        result = json.loads(response.data)
+        self.assertEqual(result["message"],"Please enter a valid email")
+        self.assertEqual(response.status_code, 400)
+
+    #Test valid registration
+    def test_signup_valid_input(self):
+        response = self.client.post('api/v1/register',data=json.dumps(self.user4),content_type="application/json")
+        self.assertEqual(response.status_code, 201) #201 created
+
    
