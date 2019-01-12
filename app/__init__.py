@@ -2,12 +2,15 @@
 
 from flask import Flask
 
-create_app = Flask(__name__)
-create_app.config['SECRET_KEY'] = "thhjsbahjbhcdahbdshbhalhbhdhjdcbhs"
-
 # local import
+from Instance.config import app_config
 from app.api.v1.views.meetups_view import v1 as V1_meetups
 from app.api.v1.views.questions_view import v1 as V1_questions
 
-create_app.register_blueprint(V1_questions)
-create_app.register_blueprint(V1_questions)
+
+def create_app(config):
+    app = Flask(__name__)
+    app.register_blueprint(V1_questions)
+    app.register_blueprint(V1_questions)
+    app.config.from_object(app_config[config])
+    return app
