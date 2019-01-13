@@ -91,7 +91,5 @@ def login():
             SECRET_KEY,
             algorithm='HS256'
         )
-        return token
-        # return jsonify({"token": token,"message":"user logged in"}), 200
-        # token
+        return jsonify({"message":"user sucessfully logged in"})
     
