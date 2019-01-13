@@ -1,12 +1,12 @@
 import unittest, Instance
 import json
-from app import create_app
 from .base_tests import BaseTest
 from flask_jwt import jwt
+from app import create_app
 
 app = create_app("testing")
 
-class TestMeetups(BaseTest):
+class TestAuth(BaseTest):
     def setUp(self):
         app.config.from_object(Instance.config.TestingConfig)
         self.client = app.test_client()
@@ -40,15 +40,23 @@ class TestMeetups(BaseTest):
             "firstname" : "jackie",
             "lastname" : "muthoni",
             "othername" : "gitari",
-            "email" : "jackie@gmail.com",
+            "email" : "jacklinem@gmail.com",
             "phoneNumber" : "+254707802693",
             "username" : "jackie",
             "password" : "R#kajd23",
             "cpassword" : "R#kajd23"
         }
-        self.user4 = {
-            "email" : "jackie@gmail.com",
+        self.newuser = {
+            "firstname" : "jackie",
+            "lastname" : "muthoni",
+            "othername" : "gitari",
+            "email" : "gitari@gmail.com",
+            "phoneNumber" : "+254707802693",
+            "username" : "jackie",
+            "password" : "R#kajd23",
+            "cpassword" : "R#kajd23"
         }
+        
         self.user5 = {
             "email" : "wronggmail.com",
             "password" : "wrong"
@@ -58,12 +66,15 @@ class TestMeetups(BaseTest):
             "password" : "wrong"
         }
         self.user7 = {
-            "email" : "jackie@gmail.com",
+            "email" : "jacklinem@gmail.com",
             "password" : "wrong"
         }
         self.user8 = {
             "email" : "jackie@gmail.com",
             "password" : "R#kajd23"
+        }
+        self.user9 = {
+            "email" : "jackie@gmail.com",
         }
 
 
@@ -100,7 +111,7 @@ class TestMeetups(BaseTest):
 
     #Test valid registration
     def test_signup_valid_input(self):
-        response = self.client.post('api/v1/signup',data=json.dumps(self.user4),content_type="application/json")
+        response = self.client.post('api/v1/signup',data=json.dumps(self.newuser),content_type="application/json")
         self.assertEqual(response.status_code, 201) #201 created
 
     '''SIGN IN'''
@@ -113,7 +124,7 @@ class TestMeetups(BaseTest):
 
     # Test empty fields
     def test_empty_signin_fields(self):
-        response = self.client.post('api/v1/signin',data=json.dumps(self.user4),content_type="application/json")
+        response = self.client.post('api/v1/signin',data=json.dumps(self.user9),content_type="application/json")
         result = json.loads(response.data)
         self.assertEqual(result["message"],"All fields are required")
         self.assertEqual(response.status_code, 400)
@@ -127,6 +138,8 @@ class TestMeetups(BaseTest):
 
     #Test wrong email
     def test_login_wrong_email(self):
+        response = self.client.post('api/v1/signup',data=json.dumps(self.user4),content_type="application/json")
+        
         response = self.client.post('api/v1/signin',data=json.dumps(self.user6),content_type="application/json")
         result = json.loads(response.data)
         self.assertEqual(result["message"],"User not Found")
@@ -134,15 +147,11 @@ class TestMeetups(BaseTest):
 
     #Test wrong password
     def test_login_wrong_password(self):
+        response = self.client.post('api/v1/signup',data=json.dumps(self.user4),content_type="application/json")
+        
         response = self.client.post('api/v1/signin',data=json.dumps(self.user7),content_type="application/json")
         result = json.loads(response.data)
         self.assertEqual(result["message"],"Input contained a wrong Password")
         self.assertEqual(response.status_code, 400)
 
-    #generate token
-    def test_login_generate_token(self):
-        response = self.client.post('api/v1/signin',data=json.dumps(self.user8),content_type="application/json")
-        self.assertEqual(response.status_code, 200)
-        result = json.loads(response.data)
-        data = jwt.decode(result["token"], app.config["SECRET_KEY"], options={"verify_iat": False},algorithms="HS256")
-        self.assertEqual(data["email"],"me@gmail.com")
+ 

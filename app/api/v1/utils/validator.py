@@ -1,10 +1,9 @@
 
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
-from app import create_app
+# from app import create_app
 
 class inputs_validate():
-
     def email_validation(self, email):
         return re.match(r"(^[a-zA-z0-9_.]+@[a-zA-z0-9-]+\.[a-z]+$)", email)
 
@@ -32,7 +31,7 @@ class inputs_validate():
             return True
 
     # compare password stored and user input
-    def signin_password(self,hash_pwrd, password):
+    def check_password(self,hash_pwrd, password):
         return check_password_hash(hash_pwrd,password)
 
 #hash the password

@@ -1,10 +1,11 @@
 from flask import jsonify,request,abort,make_response
 from app.api.v1 import vers1 as v1
 from app.api.v1.utils.validator import inputs_validate,hash_password
-from app.api.v1.models.auth_model import member,users
-from flask_jwt import jwt
+from app.api.v1.models.auth_model import member,users,token
 import datetime
-from app import create_app
+from flask_jwt import jwt
+import os
+SECRET_KEY = os.getenv("SECRET")
 
 
 inputs_validate = inputs_validate()
@@ -69,7 +70,7 @@ def login():
 
     #validate email
     if not inputs_validate.email_validation(email):
-        return jsonify({"status": 400, "message": "Your email is not valid"}), 400
+        return jsonify({"status": 400, "message": "Please enter a valid email"}), 400
 
     #check if email exists
     usr = member().user_exists(email)
@@ -77,7 +78,20 @@ def login():
         abort(make_response(jsonify({"message":"User not Found"}),404))
 
     #Check if password match
-    if not inputs_validate.compare_password(usr['password'],password):
-        abort(make_response(jsonify({'message':'Invalid Password'}),400))
+    if not inputs_validate.check_password(usr['password'],password):
+        abort(make_response(jsonify({'message':'Input contained a wrong Password'}),400)) 
 
+    else: #has a header,payload,signature
+        payload = {"email": email, 
+        'iat': datetime.datetime.utcnow(),
+        'exp' : datetime.datetime.utcnow()+ datetime.timedelta(minutes=300)
+        }
+        token = jwt.encode(
+            payload,
+            SECRET_KEY,
+            algorithm='HS256'
+        )
+        return token
+        # return jsonify({"token": token,"message":"user logged in"}), 200
+        # token
     

@@ -1,4 +1,9 @@
 #global variable
+import datetime
+from flask_jwt import jwt
+import os
+SECRET_KEY = os.getenv("SECRET")
+
 users = []
 
 class member(object):    
@@ -32,3 +37,22 @@ class member(object):
         for user in users:
             if user['email'] == email:
                 return user
+
+def token(self, email):
+    """
+    Generates the Auth Token
+    :return: string
+    """
+    try:
+        payload = {
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=5),
+            'iat': datetime.datetime.utcnow(),
+            'sub': email
+        }
+        return jwt.encode(
+            payload,
+            SECRET_KEY,
+            algorithm='HS256'
+        )
+    except Exception as e:
+        return e
