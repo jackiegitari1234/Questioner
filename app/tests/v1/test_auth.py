@@ -153,6 +153,3 @@ class TestAuth(BaseTest):
         result = json.loads(response.data)
         self.assertEqual(result["message"],"Input contained a wrong Password")
         self.assertEqual(response.status_code, 400)
-
- 
- 
