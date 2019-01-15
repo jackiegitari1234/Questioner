@@ -1,26 +1,14 @@
+# global builtin modules
 import unittest,Instance
 import json
+
+# local imports
 from app import create_app
 from .base_tests import BaseTest
 
 app = create_app("testing")
 
 class TestQuestions(BaseTest):
-    def setUp(self):
-        app.config.from_object(Instance.config.TestingConfig)
-        self.client = app.test_client()
-
-        self.question1 ={
-            "title" : "Tests"
-        }
-        self.question2 ={
-            "meetup_id" : 1,
-            "title" : "Tests",
-            "question" : "What are tests"
-        }
-    
-
-    
 
     # test json data 
     def test_json_data(self):
@@ -31,13 +19,13 @@ class TestQuestions(BaseTest):
 
     # Test for empty fields
     def test_submit_empty_questions_fields(self):
-        response = self.client.post('api/v1/meetup/1/question',data=json.dumps(self.question1),content_type="application/json")
+        response = self.client.post('api/v1/meetup/1/question',data=json.dumps(self.question_1),content_type="application/json")
         result = json.loads(response.data)
         self.assertEqual(result["message"],"Please enter a question and it's title")
 
     # Test for valid input
     def test_submit_valid_questions_fields(self):
-        response = self.client.post('api/v1/meetup/1/question',data=json.dumps(self.question2),content_type="application/json")
+        response = self.client.post('api/v1/meetup/1/question',data=json.dumps(self.question_2),content_type="application/json")
         result = json.loads(response.data)
         self.assertTrue(result["data"])
 
@@ -45,13 +33,13 @@ class TestQuestions(BaseTest):
 
     # upvote 
     def test_upvotesvotes(self):
-        response = self.client.post('api/v1/meetup/1/question',data=json.dumps(self.question2),content_type="application/json")
+        response = self.client.post('api/v1/meetup/1/question',data=json.dumps(self.question_2),content_type="application/json")
         response = self.client.put('api/v1/questions/1/upvote')
         self.assertEqual(response.status_code, 200)
 
     # downvote 
     def test_downvotes(self):
-        response = self.client.post('api/v1/meetup/1/question',data=json.dumps(self.question2),content_type="application/json")
+        response = self.client.post('api/v1/meetup/1/question',data=json.dumps(self.question_2),content_type="application/json")
         response = self.client.put('api/v1/questions/1/downvote')
         self.assertEqual(response.status_code, 200)
 

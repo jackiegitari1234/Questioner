@@ -1,5 +1,8 @@
 '''ENTRY POINT OF THE APP'''
+# global builtin modules
 import os
+
+# local imports
 from app import create_app
 
 configName = os.getenv('APP_SETTINGS') 

@@ -1,6 +1,10 @@
+#downloaded modules
+from flask import jsonify,request
+
+#local imports
 from app.api.v1 import vers1 as v1
 from app.api.v1.models.meetups_model import meetup,meetups,rsvp
-from flask import jsonify,request
+
 
 @v1.route('/meetups', methods=['POST'])
 def add_meetup():

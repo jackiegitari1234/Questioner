@@ -1,6 +1,10 @@
+#downloaded modules
+from flask import jsonify,request
+
+#local imports
 from app.api.v1 import vers1 as v1
 from app.api.v1.models.questions_model import quiz,questions
-from flask import jsonify,request
+
 
 @v1.route('/meetup/<int:id>/question', methods=['POST'])
 def add_question(id,user=1):
@@ -18,7 +22,7 @@ def add_question(id,user=1):
     questn = question_data ['question']
 
     
-    Qstn = quiz(title,questn,user,id).addQuestion()
+    Qstn = quiz(title,questn,user,id).add_Question()
     return jsonify({"status": 201, "data": Qstn})
 
 @v1.route('/questions/<int:id>/upvote', endpoint='upvote',methods=['PUT'])

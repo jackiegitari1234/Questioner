@@ -8,7 +8,7 @@ class quiz(object):
         self.question = question
         self.votes = votes
 
-    def addQuestion(self):
+    def add_Question(self):
         Question = {
             "id" : self.questionId,
             "user": self.user,
