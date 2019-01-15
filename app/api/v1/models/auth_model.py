@@ -1,7 +1,11 @@
-#global variable
+#global variables
 import datetime
-from flask_jwt import jwt
 import os
+
+#downloaded modules
+from flask_jwt import jwt
+
+
 SECRET_KEY = os.getenv("SECRET")
 
 users = []

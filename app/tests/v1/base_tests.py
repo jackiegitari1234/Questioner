@@ -1,4 +1,7 @@
+# global builtin modules
 import unittest
+
+# local imports
 from app import create_app
 
 class BaseTest(unittest.TestCase):

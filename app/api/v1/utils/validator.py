@@ -1,7 +1,9 @@
-
+# global builtin modules
 import re
+
+#downloaded modules
 from werkzeug.security import generate_password_hash, check_password_hash
-# from app import create_app
+
 
 class inputs_validate():
     def email_validation(self, email):

@@ -1,8 +1,9 @@
 '''THIS IS THE GLUE'''
 
+#downloaded modules
 from flask import Flask
 
-# local import
+# local imports
 from Instance.config import app_config
 from app.api.v1.views.meetups_view import v1 as V1_meetups
 from app.api.v1.views.questions_view import v1 as V1_questions

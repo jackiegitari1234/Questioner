@@ -1,5 +1,8 @@
+# global builtin modules
 import unittest,Instance
 import json
+
+# local imports
 from app import create_app
 from .base_tests import BaseTest
 

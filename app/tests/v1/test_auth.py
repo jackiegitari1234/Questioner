@@ -1,8 +1,10 @@
+# global builtin modules
 import unittest, Instance
 import json
-from .base_tests import BaseTest
-from flask_jwt import jwt
+
+# local imports
 from app import create_app
+from .base_tests import BaseTest
 
 app = create_app("testing")
 

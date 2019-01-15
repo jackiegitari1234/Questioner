@@ -1,10 +1,16 @@
+# global builtin modules
+import datetime
+import os
+
+#downloaded modules
 from flask import jsonify,request,abort,make_response
+
+#local imports
 from app.api.v1 import vers1 as v1
 from app.api.v1.utils.validator import inputs_validate,hash_password
 from app.api.v1.models.auth_model import add_user,users,token,user_exists
-import datetime
-from flask_jwt import jwt
-import os
+
+
 SECRET_KEY = os.getenv("SECRET")
 
 

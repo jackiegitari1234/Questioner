@@ -1,6 +1,10 @@
+#downloaded modules
+from flask import jsonify,request
+
+#local imports
 from app.api.v1 import vers1 as v1
 from app.api.v1.models.questions_model import quiz,questions
-from flask import jsonify,request
+
 
 @v1.route('/meetup/<int:id>/question', methods=['POST'])
 def add_question(id,user=1):
