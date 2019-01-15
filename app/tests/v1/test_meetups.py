@@ -85,6 +85,5 @@ class TestMeetups(BaseTest):
         response2 = self.client.post('api/v1/meetups',data=json.dumps(self.meetup2),content_type="application/json")
         
         response = self.client.post('api/v1/meetups/1/rsvps',data=json.dumps(self.rsvp2),content_type="application/json")
-        result = json.loads(response.data)
         self.assertEqual(response.status_code, 200)
 

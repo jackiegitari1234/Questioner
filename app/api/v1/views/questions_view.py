@@ -22,7 +22,7 @@ def add_question(id,user=1):
     questn = question_data ['question']
 
     
-    Qstn = quiz(title,questn,user,id).addQuestion()
+    Qstn = quiz(title,questn,user,id).add_Question()
     return jsonify({"status": 201, "data": Qstn})
 
 @v1.route('/questions/<int:id>/upvote', endpoint='upvote',methods=['PUT'])
