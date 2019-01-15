@@ -14,6 +14,7 @@ class TestQuestions(BaseTest):
             "title" : "Tests"
         }
         self.question2 ={
+            "meetup_id" : 1,
             "title" : "Tests",
             "question" : "What are tests"
         }
