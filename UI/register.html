@@ -10,41 +10,34 @@
     
     <body class="body">
             <div class="menu">
-                <label for="show-menu" class="show-menu">Show Menu</label>
-                <input type="checkbox" id="show-menu" role="button">
-                <div class="title">
+                <a class="title" href="index.html">
                     Questioner
-                </div>
-                <ul id="menu">
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="index.html">User Login</a>
-                    </li>
-                </ul>
+                </a>
             </div>
 
             
         <div class="container">
             
             <form method="post" class=" register">
-                <h>Please Fill-In Your Personal Details Below</h> <br></br>
-                            
-                <label for="fullname">Fullname </label>
-                <input class="form-control " type="name" id="fullname" name="fullname" placeholder="fullname"/>
-                    
-                <label for="myemail">Email</label>
-                <input class="form-control " type="text" id="myemail" name="email" placeholder="example@email.com" />
-            
-                <label for="mypassword">Password </label>
-                <input class="form-control" type="password" id="password" name="password" placeholder="********"/>
+                <h>Register</h> <br></br>
+                <div class="loginpg">         
+                    <label for="fullname">Fullname </label>
+                    <input class="form-control " type="name" id="fullname" name="fullname" placeholder="fullname"/>
+                        
+                    <label for="myemail">Email</label>
+                    <input class="form-control " type="text" id="myemail" name="email" placeholder="example@email.com" />
+                
+                    <label for="mypassword">Password </label>
+                    <input class="form-control" type="password" id="password" name="password" placeholder="********"/>
 
-                <label for="cmypassword">Confirm Password</label>
-                <input class="form-control" type="password" id="cpassword" name="cpass" placeholder="********"/><br>
+                    <label for="cmypassword">Confirm Password</label>
+                    <input class="form-control" type="password" id="cpassword" name="cpass" placeholder="********"/><br>
+                        
+                
+                    <button class="success newbtn" type="submit" name="submit"> Register</button>
                     
-            
-                <button class="success" type="submit" name="submit"> Register</button>
+                </div>
+                Already having an account? <a href="index.html">Login</a>
                 
             </form>
             

@@ -21,6 +21,8 @@ body{
     float:left;
     font-size: 3em;
     padding: 0.5em 0 0 0.5em;
+    color: black;
+    text-decoration: none;
 }
 ul {
     list-style-type:none;
@@ -53,11 +55,12 @@ li:hover a {
 .show-menu {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-decoration: none;
-    color: #fff;
-    background: #19c589;
+    color: black;
+    background: aqua;
     text-align: center;
     padding: 10px 0;
     display: none;
+    text-decoration: underline;
 }
 input[type=checkbox]{
     display: none;
@@ -82,7 +85,7 @@ input[type=checkbox]:checked ~ #menu{
     .show-menu {
         display:block;
     }
-    .user, .profile, .userform, .question, .login_contents, .mypages{
+    .user, .profile, .userform, .question, .login_contents, .mypages, .userform1{
         flex-direction: column !important;
     }
     .profile{
@@ -97,8 +100,13 @@ input[type=checkbox]:checked ~ #menu{
     padding-bottom: 10%;
     margin:0;
 }
-.content{
+.container-fluid{
     background-color: white;
+    width: 90%;
+    height: 100%;
+    padding-bottom: 10%;
+    margin-right:5%;
+    margin-left: 5%;
 }
 .container .link{
     color: aqua;
@@ -115,15 +123,32 @@ input[type=checkbox]:checked ~ #menu{
 
 }
 .userform{
-    /* display: inline-block; */
-    border-style: ridge;
     flex: 1;
     border-radius:0.5em;
-    text-align: left;
-    padding: 1em;
+    text-align: center;
     color: aqua;
     font-size: 1em;
     flex-direction: column; 
+    margin-left: 8%;
+    padding: auto;
+    box-shadow: 0 16px 24px 2px rgba(234, 239, 240, 0.14), 0 6px 30px 5px rgba(241, 243, 243, 0.12), 0 8px 10px -5px rgba(0, 0, 0, .2);
+} 
+
+.userform1{
+    flex: 1;
+    text-align: center;
+    color: aqua;
+    font-size: 1em;
+    flex-direction: column; 
+    margin-left: 8%;
+    padding: 1em;
+    border-radius: 6px;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
+}
+.loginpg{
+    text-align:left;
+    margin: auto;
+    width: 70%;
 }
 .container h{
     font-size: 2em;
@@ -132,8 +157,8 @@ input[type=checkbox]:checked ~ #menu{
 .login_contents{
     flex-direction: column;
     flex:1;
-    margin-top: 5%;
     color: aqua;
+    margin-right: 8%;
 }
 
 button{
@@ -159,14 +184,19 @@ button{
 }
 .adm_alert{
     width:10%;
-    float: right;
+    /* float: right; */
 }
 .form-control{
     margin-bottom: 1em;
-    width: 70%;
+    width: 100%;
     border-radius:0.5em;
     height:5%;
     padding-left: 0.5em;
+}
+.newbtn{
+    width: 100%;
+    margin-bottom: 1em;
+    margin: 0;
 }
 label { 
     display: block; 
@@ -193,9 +223,7 @@ label {
     color: black;
     font-size: 1.5em;
 }
-.adm{
-    margin: 3px;
-}
+
 .admin_image{
     width:45%;
     height: 35%;
@@ -205,8 +233,8 @@ label {
 }
 .meets{
     font-size: 1em;
-    width: 30%;
-    margin-left: 30%;
+    /* width: 30%; */
+    /* margin-right: 10%; */
     color: black;
 }
 .saying{
@@ -224,17 +252,19 @@ label {
     float: right;
 }
 .allmeetups  {
-    width: 100%;
-    float: left; 
-    margin: 1em 1em 10em 5em;
+    /* width: 100%; */
+    margin: 1em 0em 10em 0em;
+
     
 }
 .meetup{
     float: left;
-    padding: 0.5em;
-    border-style: ridge;
+    margin-bottom: 1em;
+    margin-top:1em;
     text-align: left;
-    width: 90%;
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
 } 
 .allmeetups p{
     font-size: 1.5em;
@@ -253,14 +283,18 @@ label {
 }
 .register{
     display: inline-block;
-    border-style: ridge;
     width: 50%;
     border-radius:0.5em;
-    text-align: left;
+    text-align: center;
     padding: 1em;
     color: aqua;
     font-size: 1em;
     margin-top: 5%;
+    box-shadow: 0 16px 24px 2px rgba(234, 239, 240, 0.14), 0 6px 30px 5px rgba(241, 243, 243, 0.12), 0 8px 10px -5px rgba(0, 0, 0, .2);
+
+}
+.register a{
+    color: aqua;
 }
 
 
