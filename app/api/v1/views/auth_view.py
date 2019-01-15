@@ -81,15 +81,6 @@ def login():
     if not inputs_validate.check_password(usr['password'],password):
         abort(make_response(jsonify({'message':'Input contained a wrong Password'}),400)) 
 
-    else: #has a header,payload,signature
-        payload = {"email": email, 
-        'iat': datetime.datetime.utcnow(),
-        'exp' : datetime.datetime.utcnow()+ datetime.timedelta(minutes=300)
-        }
-        token = jwt.encode(
-            payload,
-            SECRET_KEY,
-            algorithm='HS256'
-        )
+    else: 
         return jsonify({"message":"user sucessfully logged in"})
     
