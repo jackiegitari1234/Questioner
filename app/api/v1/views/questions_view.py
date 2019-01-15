@@ -31,8 +31,4 @@ def votes(id):
         Quizn = quiz().downvotes(id)
         return jsonify({"status": 201, "data": Quizn})
 
-# @v1.route('/questions/<int:id>/downvote', endpoint='downvote', methods=['PUT'])
-# def dpwnvotes(id):
-#     Quizn = quiz().downvotes(id)
-#     return jsonify({"status": 201, "data": Quizn})
 
