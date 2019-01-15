@@ -30,3 +30,4 @@ class quiz(object):
             if qtn['id'] == id:
                 qtn['votes'] = qtn['votes'] -1
                 return qtn
+                
