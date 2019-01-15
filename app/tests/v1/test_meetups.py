@@ -9,28 +9,7 @@ from .base_tests import BaseTest
 app = create_app("testing")
 
 class TestMeetups(BaseTest):
-    def setUp(self):
-        app.config.from_object(Instance.config.TestingConfig)
-        self.client = app.test_client()
-
-        self.meetup1 ={
-            "topic" : "Programming"
-        }
-        self.meetup2 ={
-            "id": "1",
-            "topic" : "Programming",
-            "location" : "Nairobi",
-            "happeningOn" : "20/05/2019",
-            "tags" : "['php','java']"
-        }
-        self.rsvp1 = {
-            "user" : "1"
-        }
-        self.rsvp2 = {
-            "response" : "yes",
-            "user" : "1"
-        }
-
+        
     # test json data 
     def test_post_meetup(self):
         response = self.client.post('api/v1/meetups')
@@ -40,14 +19,14 @@ class TestMeetups(BaseTest):
 
     # Test empty fields
     def test_submit_empty_meetup_fields(self):
-        response = self.client.post('api/v1/meetups',data=json.dumps(self.meetup1),content_type="application/json")
+        response = self.client.post('api/v1/meetups',data=json.dumps(self.meetup_1),content_type="application/json")
         result = json.loads(response.data)
         self.assertEqual(result["message"],"Please fill in all the required input fields")
         self.assertEqual(response.status_code, 400)
 
     #Test valid input
     def test_valid_details(self):
-        response = self.client.post('api/v1/meetups',data=json.dumps(self.meetup2),content_type="application/json")
+        response = self.client.post('api/v1/meetups',data=json.dumps(self.meetup_2),content_type="application/json")
         result = json.loads(response.data)
         self.assertTrue(result["data"])
         self.assertEqual(response.status_code, 200)
@@ -55,7 +34,7 @@ class TestMeetups(BaseTest):
 
         #Test to display a meetup record
     def test_get_specific_meetup(self):
-        response = self.client.post('api/v1/meetups',data=json.dumps(self.meetup2),content_type="application/json")
+        response = self.client.post('api/v1/meetups',data=json.dumps(self.meetup_2),content_type="application/json")
         result = json.loads(response.data)
         
         data = result["data"]
@@ -76,14 +55,14 @@ class TestMeetups(BaseTest):
 
     # Test empty fields
     def test_empty_rsvp_fields(self):
-        response = self.client.post('api/v1/meetups/1/rsvps',data=json.dumps(self.rsvp1),content_type="application/json")
+        response = self.client.post('api/v1/meetups/1/rsvps',data=json.dumps(self.rsvp_1),content_type="application/json")
         result = json.loads(response.data)
         self.assertEqual(result["message"],"Please enter a response")
         self.assertEqual(response.status_code, 400)
 
     def test_valid_rsvp_details(self):
-        response2 = self.client.post('api/v1/meetups',data=json.dumps(self.meetup2),content_type="application/json")
+        response2 = self.client.post('api/v1/meetups',data=json.dumps(self.meetup_2),content_type="application/json")
         
-        response = self.client.post('api/v1/meetups/1/rsvps',data=json.dumps(self.rsvp2),content_type="application/json")
+        response = self.client.post('api/v1/meetups/1/rsvps',data=json.dumps(self.rsvp_2),content_type="application/json")
         self.assertEqual(response.status_code, 200)
 
