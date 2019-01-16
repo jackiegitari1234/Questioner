@@ -3,7 +3,7 @@ from flask import jsonify,request
 
 #local imports
 from app.api.v1 import vers1 as v1
-from app.api.v1.models.meetups_model import meetup,meetups,rsvp
+from app.api.v1.models.meetups_model import meetup,meetups,rsvp,get_meetup
 
 
 @v1.route('/meetups', methods=['POST'])
@@ -24,12 +24,14 @@ def add_meetup():
     happeningOn = userdata['happeningOn']
     tags = userdata['tags']
 
-    Meetup = meetup(topic,location,happeningOn,tags).addMeetup()
+    Meetup = meetup(topic,location,happeningOn,tags).add_Meetup()
     return jsonify({"status": 200, "data": Meetup})
 
-@v1.route('/meetups/<int:meetup_id>/rsvps', methods=['GET'])
-def get_meetup(meetup_id):    
-    return jsonify({"status": 200, "data": meetup})
+@v1.route('/meetups/<int:id>', methods=['GET'])
+def find_meetup(id): 
+    id = id
+    new_meetup = get_meetup(id) 
+    return jsonify({"status": 200, "data": new_meetup})
 
 @v1.route('/meetups/upcoming', methods=['GET'])
 def all_meetup():
