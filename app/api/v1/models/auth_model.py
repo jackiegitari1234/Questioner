@@ -32,21 +32,4 @@ def user_exists(email):
         if user['email'] == email:
             return user
 
-def token(self, email):
-    """
-    Generates the Auth Token
-    :return: string
-    """
-    try:
-        payload = {
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=5),
-            'iat': datetime.datetime.utcnow(),
-            'sub': email
-        }
-        return jwt.encode(
-            payload,
-            SECRET_KEY,
-            algorithm='HS256'
-        )
-    except Exception as e:
-        return e
+
