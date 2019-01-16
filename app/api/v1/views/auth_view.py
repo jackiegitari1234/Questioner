@@ -8,7 +8,7 @@ from flask import jsonify,request,abort,make_response,json
 #local imports
 from app.api.v1 import vers1 as v1
 from app.api.v1.utils.validator import inputs_validate,hash_password
-from app.api.v1.models.auth_model import add_user,users,token,user_exists
+from app.api.v1.models.auth_model import add_user,users,user_exists
 
 
 SECRET_KEY = os.getenv("SECRET")
