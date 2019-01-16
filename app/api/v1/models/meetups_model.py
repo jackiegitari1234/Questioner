@@ -17,6 +17,11 @@ class meetup(object):
         }
         meetups.append(meetup)
         return meetup
+    def upvotes(self,id):
+        for meetup in meetups:
+            if meetup['id'] == id:
+                return meetup
+
 
 
 RSVPs = []
