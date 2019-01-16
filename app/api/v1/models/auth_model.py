@@ -25,7 +25,7 @@ def add_user(firstname,lastname,othername,email,phoneNumber,username,pwd):
         "password": pwd
     }
     users.append(user)
-    return users
+    return user
 
 def user_exists(email):
     for user in users:
