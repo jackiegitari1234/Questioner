@@ -7,7 +7,7 @@ class meetup(object):
         self.happeningOn = happeningOn
         self.tags = tags
 
-    def addMeetup(self):
+    def add_Meetup(self):
         meetup = {
             "id" : self.meetupId,
             "topic": self.topic,
@@ -17,6 +17,12 @@ class meetup(object):
         }
         meetups.append(meetup)
         return meetup
+        
+def get_meetup(id):
+    for each_meetup in meetups:
+        if each_meetup['id'] == id:
+            return each_meetup
+
 
 
 RSVPs = []

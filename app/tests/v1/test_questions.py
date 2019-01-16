@@ -34,12 +34,12 @@ class TestQuestions(BaseTest):
     # upvote 
     def test_upvotesvotes(self):
         response = self.client.post('api/v1/meetup/1/question',data=json.dumps(self.question_2),content_type="application/json")
-        response = self.client.put('api/v1/questions/1/upvote')
-        self.assertEqual(response.status_code, 200)
+        response = self.client.patch('api/v1/questions/1/upvote')
+        self.assertEqual(response.status_code, 201)
 
     # downvote 
     def test_downvotes(self):
         response = self.client.post('api/v1/meetup/1/question',data=json.dumps(self.question_2),content_type="application/json")
-        response = self.client.put('api/v1/questions/1/downvote')
-        self.assertEqual(response.status_code, 200)
+        response = self.client.patch('api/v1/questions/1/downvote')
+        self.assertEqual(response.status_code, 201)
 
