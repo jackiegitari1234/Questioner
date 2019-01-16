@@ -28,6 +28,11 @@ class TestQuestions(BaseTest):
         response = self.client.post('api/v1/meetup/1/question',data=json.dumps(self.question_2),content_type="application/json")
         result = json.loads(response.data)
         self.assertTrue(result["data"])
+ 
+    def test_data_with_more_than_the_required_fields(self):
+        response = self.client.post('api/v1/meetup/1/question',data=json.dumps(self.question_3),content_type="application/json")
+        result = json.loads(response.data)
+        self.assertEqual(result["message"],"Please provide just the required fields")
 
     
 

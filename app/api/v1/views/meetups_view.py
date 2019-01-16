@@ -9,20 +9,23 @@ from app.api.v1.models.meetups_model import meetup,meetups,rsvp,get_meetup
 @v1.route('/meetups', methods=['POST'])
 def add_meetup():
 
-    userdata = request.get_json()
+    user_data = request.get_json()
 
-    if not userdata:
+    if not user_data:
         abort(make_response(jsonify({"message":"Only Application/JSON input expected"}),400))
     
     # Check for empty inputs
-    if not all(field in userdata for field in ["topic", "location", "happeningOn","tags"]):
+    if not all(field in user_data for field in ["topic", "location", "happeningOn","tags"]):
         abort(make_response(jsonify({"message":"Please fill in all the required input fields"}),400))
 
+    if len (user_data) > 5:
+        abort(make_response(jsonify({"message":"Please provide just the required fields"}),400))
+
     
-    topic = userdata['topic']
-    location = userdata['location']
-    happeningOn = userdata['happeningOn']
-    tags = userdata['tags']
+    topic = user_data['topic']
+    location = user_data['location']
+    happeningOn = user_data['happeningOn']
+    tags = user_data['tags']
 
     Meetup = meetup(topic,location,happeningOn,tags).add_Meetup()
     abort(make_response(jsonify({"data":Meetup}),201))
@@ -39,18 +42,22 @@ def all_meetup():
 
 @v1.route('/meetups/<int:meetup_id>/rsvps', methods=['POST'])
 def add_rsvp(meetup_id):
-    userdata = request.get_json()
+    user_data = request.get_json()
 
-    if not userdata:
+    if not user_data:
         abort(make_response(jsonify({"message": "Only data of Application/JSON expected"}),400))
     
     # Check for empty inputs
-    if not all(field in userdata for field in ["user","response"]):
+    if not all(field in user_data for field in ["user","response"]):
         abort(make_response(jsonify({"message": "All fields are required"}),400))
 
+    if len (user_data) > 2:
+        abort(make_response(jsonify({"message":"Please provide just the required fields"}),400))
+
+
     meetup = meetup_id
-    user = userdata['user']
-    response = userdata['response']
+    user = user_data['user']
+    response = user_data['response']
 
     RSVP = rsvp(meetup,user,response).addRsvp()
     abort(make_response(jsonify({"data": RSVP}),201))

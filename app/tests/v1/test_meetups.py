@@ -31,6 +31,13 @@ class TestMeetups(BaseTest):
         self.assertTrue(result["data"])
         self.assertEqual(response.status_code, 201)
 
+    #Test for more than the required fields
+    def test_for_more_than_the_required_fields(self):
+        response = self.client.post('api/v1/meetups',data=json.dumps(self.meetup_3),content_type="application/json")
+        result = json.loads(response.data)
+        self.assertEqual(result["message"],"Please provide just the required fields")
+        self.assertEqual(response.status_code, 400)
+
 
         #Test to display a meetup record
     def test_add_specific_meetup(self):
@@ -48,7 +55,7 @@ class TestMeetups(BaseTest):
         self.assertEqual(response.status_code, 200)
         
 
-
+    #upcoming
     def test_get_upcoming_meetups(self):
         getresponse = self.client.get('api/v1/meetups/upcoming')
         self.assertEqual(getresponse.status_code, 200)
@@ -72,4 +79,12 @@ class TestMeetups(BaseTest):
         
         response = self.client.post('api/v1/meetups/1/rsvps',data=json.dumps(self.rsvp_2),content_type="application/json")
         self.assertEqual(response.status_code, 201)
+
+    def test_for_rsvps_with_more_than_the_required_fields(self):
+        response = self.client.post('api/v1/meetups',data=json.dumps(self.meetup_2),content_type="application/json")
+        
+        response = self.client.post('api/v1/meetups/1/rsvps',data=json.dumps(self.rsvp_3),content_type="application/json")
+        result = json.loads(response.data)
+        self.assertEqual(result["message"],"Please provide just the required fields")
+        self.assertEqual(response.status_code, 400)
 

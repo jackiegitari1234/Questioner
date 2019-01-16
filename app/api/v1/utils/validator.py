@@ -3,8 +3,6 @@ import re
 
 #downloaded modules
 from werkzeug.security import generate_password_hash, check_password_hash
-
-
 class inputs_validate():
     def email_validation(self, email):
         return re.match(r"(^[a-zA-z0-9_.]+@[a-zA-z0-9-]+\.[a-z]+$)", email)

@@ -46,6 +46,12 @@ class TestAuth(BaseTest):
         response = self.client.post('api/v1/signup',data=json.dumps(self.new_user),content_type="application/json")
         self.assertEqual(response.status_code, 201) #201 created
 
+    #Test registration with more than the required fields
+    def test_register_with_more_than_the_required_fields(self):
+        response = self.client.post('api/v1/signup',data=json.dumps(self.nw_user),content_type="application/json")
+        result = json.loads(response.data)
+        self.assertEqual(result["message"],"Please provide just the required fields")
+
     '''SIGN IN'''
     # test json data 
     def test_application_type(self):
@@ -58,7 +64,7 @@ class TestAuth(BaseTest):
     def test_empty_signin_fields(self):
         response = self.client.post('api/v1/signin',data=json.dumps(self.user_9),content_type="application/json")
         result = json.loads(response.data)
-        self.assertEqual(result["message"],"All fields are required")
+        self.assertEqual(result["message"],"Email and Paswword are required")
         self.assertEqual(response.status_code, 400)
 
     #invalid email
@@ -84,4 +90,11 @@ class TestAuth(BaseTest):
         response = self.client.post('api/v1/signin',data=json.dumps(self.user_7),content_type="application/json")
         result = json.loads(response.data)
         self.assertEqual(result["message"],"Input contained a wrong Password")
+        self.assertEqual(response.status_code, 400)
+
+     #Test login with more than the required fields
+    def test_login_with_more_than_the_required_fields(self):
+        response = self.client.post('api/v1/signin',data=json.dumps(self.user_4),content_type="application/json")
+        result = json.loads(response.data)
+        self.assertEqual(result["message"],"Please provide just email and password")
         self.assertEqual(response.status_code, 400)
