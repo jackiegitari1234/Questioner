@@ -51,6 +51,6 @@ def add_rsvp(meetup_id):
     response = userdata['response']
 
     RSVP = rsvp(meetup,user,response).addRsvp()
-    return jsonify({"status": 200, "data": RSVP})
+    return jsonify({"status": 201, "data": RSVP})
 
 
