@@ -37,6 +37,13 @@ class BaseTest(unittest.TestCase):
             "tags" : "['php','java']",
             "name" : "my name"
         }
+        self.meetup_4 ={
+            "id": "1",
+            "topic" : "coding",
+            "location" : "Nairobi",
+            "happeningOn" : "20/05/2019",
+            "tags" : "['php','java']"
+        }
         self.rsvp_1 = {
             "user" : "1"
         }

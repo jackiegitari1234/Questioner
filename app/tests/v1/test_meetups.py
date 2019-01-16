@@ -26,7 +26,7 @@ class TestMeetups(BaseTest):
 
     #Test valid input
     def test_valid_details(self):
-        response = self.client.post('api/v1/meetups',data=json.dumps(self.meetup_2),content_type="application/json")
+        response = self.client.post('api/v1/meetups',data=json.dumps(self.meetup_4),content_type="application/json")
         result = json.loads(response.data)
         self.assertTrue(result["data"])
         self.assertEqual(response.status_code, 201)
