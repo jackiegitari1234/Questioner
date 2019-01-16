@@ -29,17 +29,24 @@ class TestMeetups(BaseTest):
         response = self.client.post('api/v1/meetups',data=json.dumps(self.meetup_2),content_type="application/json")
         result = json.loads(response.data)
         self.assertTrue(result["data"])
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 201)
 
 
         #Test to display a meetup record
-    def test_get_specific_meetup(self):
+    def test_add_specific_meetup(self):
         response = self.client.post('api/v1/meetups',data=json.dumps(self.meetup_2),content_type="application/json")
         result = json.loads(response.data)
         
         data = result["data"]
         meetup_id = data["id"]
         meetupid = int(meetup_id)
+
+         #Test to display a meetup record
+    def test_get_specific_meetup(self):
+        response = self.client.post('api/v1/meetups',data=json.dumps(self.meetup_2),content_type="application/json")
+        response = self.client.get('api/v1/meetups/1')
+        self.assertEqual(response.status_code, 200)
+        
 
 
     def test_get_upcoming_meetups(self):
@@ -57,12 +64,12 @@ class TestMeetups(BaseTest):
     def test_empty_rsvp_fields(self):
         response = self.client.post('api/v1/meetups/1/rsvps',data=json.dumps(self.rsvp_1),content_type="application/json")
         result = json.loads(response.data)
-        self.assertEqual(result["message"],"Please enter a response")
+        self.assertEqual(result["message"],"All fields are required")
         self.assertEqual(response.status_code, 400)
 
     def test_valid_rsvp_details(self):
         response2 = self.client.post('api/v1/meetups',data=json.dumps(self.meetup_2),content_type="application/json")
         
         response = self.client.post('api/v1/meetups/1/rsvps',data=json.dumps(self.rsvp_2),content_type="application/json")
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 201)
 

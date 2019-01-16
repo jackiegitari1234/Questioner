@@ -1,5 +1,5 @@
 #downloaded modules
-from flask import jsonify,request
+from flask import jsonify,request,abort,make_response
 
 #local imports
 from app.api.v1 import vers1 as v1
@@ -12,27 +12,27 @@ def add_question(id,user=1):
     question_data = request.get_json()
 
     if not question_data:
-        return jsonify({"status": 400, "message": "Only input of Application/JSON expected"}), 400
+        abort(make_response(jsonify({"message":"Only input of Application/JSON expected"}),400))
     
     # Check for empty inputs
     if not all(field in question_data for field in ["meetup_id","title","question"]):
-        return jsonify({"status": 400, "message": "Please enter a question and it's title"})
+        abort(make_response(jsonify({"message":"Please enter a question and it's title"}),400))
 
     title = question_data ['title']
     questn = question_data ['question']
 
     
     Qstn = quiz(title,questn,user,id).add_Question()
-    return jsonify({"status": 201, "data": Qstn})
+    abort(make_response(jsonify({"data":Qstn}),201))
 
-@v1.route('/questions/<int:id>/upvote', endpoint='upvote',methods=['PUT'])
-@v1.route('/questions/<int:id>/downvote', endpoint='downvote', methods=['PUT'])
+@v1.route('/questions/<int:id>/upvote', endpoint='upvote',methods=['PATCH'])
+@v1.route('/questions/<int:id>/downvote', endpoint='downvote', methods=['PATCH'])
 def votes(id):
     if request.endpoint == 'apiv1.upvote':
         Quizn = quiz().upvotes(id)
-        return jsonify({"status": 201, "data": Quizn})
+        abort(make_response(jsonify({"data":Quizn}),201))
     elif request.endpoint == 'apiv1.downvote':
         Quizn = quiz().downvotes(id)
-        return jsonify({"status": 201, "data": Quizn})
+        abort(make_response(jsonify({"data":Quizn}),201)) 
 
 
