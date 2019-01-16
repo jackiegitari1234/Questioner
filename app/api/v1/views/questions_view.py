@@ -15,9 +15,12 @@ def add_question(id,user=1):
         abort(make_response(jsonify({"message":"Only input of Application/JSON expected"}),400))
     
     # Check for empty inputs
-    if not all(field in question_data for field in ["meetup_id","title","question"]):
+    if not all(field in question_data for field in ["title","question"]):
         abort(make_response(jsonify({"message":"Please enter a question and it's title"}),400))
 
+    if len (question_data) > 2:
+        abort(make_response(jsonify({"message":"Please provide just the required fields"}),400))
+    
     title = question_data ['title']
     questn = question_data ['question']
 

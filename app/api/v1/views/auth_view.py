@@ -3,12 +3,12 @@ import datetime
 import os
 
 #downloaded modules
-from flask import jsonify,request,abort,make_response
+from flask import jsonify,request,abort,make_response,json
 
 #local imports
 from app.api.v1 import vers1 as v1
 from app.api.v1.utils.validator import inputs_validate,hash_password
-from app.api.v1.models.auth_model import add_user,users,token,user_exists
+from app.api.v1.models.auth_model import add_user,users,user_exists
 
 
 SECRET_KEY = os.getenv("SECRET")
@@ -29,6 +29,9 @@ def register():
     # Check for empty inputs
     if not all(field in data for field in ["firstname", "lastname", "othername", "email", "phoneNumber", "username", "password", "cpassword" ]):
         abort(make_response(jsonify({"message":"All fields are required"}),400))
+
+    if len (data) > 8:
+        abort(make_response(jsonify({"message":"Please provide just the required fields"}),400))
 
     firstname = data['firstname']
     lastname = data['lastname']
@@ -62,7 +65,7 @@ def register():
 #sign in endpoint
 @v1.route('/signin', methods=['POST'])
 def login():
-    # Check for json data
+
     data = request.get_json()
     if not data:
         abort(make_response(jsonify({"message":"POST of type Application/JSON expected"}),400))
@@ -70,10 +73,14 @@ def login():
 
     # Check for empty inputs
     if not all(field in data for field in ["email","password"]):
-        abort(make_response(jsonify({"message":"All fields are required"}),400))
+        abort(make_response(jsonify({"message":"Email and Paswword are required"}),400))
+
+    if len (data) > 2:
+        abort(make_response(jsonify({"message":"Please provide just email and password"}),400))
 
     email = data['email']
     password = data['password']
+
 
     #validate email
     if not inputs_validate.email_validation(email):

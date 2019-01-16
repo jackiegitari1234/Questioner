@@ -23,6 +23,11 @@ def get_meetup(id):
         if each_meetup['id'] == id:
             return each_meetup
 
+def find_topic(topic):
+    for each_meetup in meetups:
+        if each_meetup['topic'] == topic:
+            return each_meetup
+
 
 
 RSVPs = []

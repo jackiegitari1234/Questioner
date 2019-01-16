@@ -29,12 +29,32 @@ class BaseTest(unittest.TestCase):
             "happeningOn" : "20/05/2019",
             "tags" : "['php','java']"
         }
+        self.meetup_3 ={
+            "id": "1",
+            "topic" : "Programming",
+            "location" : "Nairobi",
+            "happeningOn" : "20/05/2019",
+            "tags" : "['php','java']",
+            "name" : "my name"
+        }
+        self.meetup_4 ={
+            "id": "1",
+            "topic" : "coding",
+            "location" : "Nairobi",
+            "happeningOn" : "20/05/2019",
+            "tags" : "['php','java']"
+        }
         self.rsvp_1 = {
             "user" : "1"
         }
         self.rsvp_2 = {
             "response" : "yes",
             "user" : "1"
+        }
+        self.rsvp_3 = {
+            "response" : "yes",
+            "user" : "1",
+            "name" : "jackie"
         }
         
 
@@ -84,6 +104,17 @@ class BaseTest(unittest.TestCase):
             "password" : "R#kajd23",
             "cpassword" : "R#kajd23"
         }
+        self.nw_user = {
+            "firstname" : "jackie",
+            "lastname" : "muthoni",
+            "othername" : "gitari",
+            "email" : "gitari@gmail.com",
+            "phoneNumber" : "+254707802693",
+            "username" : "jackie",
+            "password" : "R#kajd23",
+            "cpassword" : "R#kajd23",
+            "owner" : "unknown"
+        }
         
         self.user_5 = {
             "email" : "wronggmail.com",
@@ -110,6 +141,10 @@ class BaseTest(unittest.TestCase):
             "title" : "Tests"
         }
         self.question_2 ={
+            "title" : "Tests",
+            "question" : "What are tests"
+        }
+        self.question_3 ={
             "meetup_id" : 1,
             "title" : "Tests",
             "question" : "What are tests"
