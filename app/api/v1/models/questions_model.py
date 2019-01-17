@@ -1,4 +1,6 @@
 questions = []
+total_votes = []
+total_downvotes = []
 class quiz(object):    
     def __init__(self, title=None, question=None, user=None, meetup=None, votes=0):
         self.questionId = len(questions)+1
@@ -20,14 +22,30 @@ class quiz(object):
         questions.append(Question)
         return Question
 
-    def upvotes(self,id):
+    def upvotes(self,id,user):
+
+        upvote_quiz = {
+            "voter": user,
+            "question": id
+            }
+
+        for vot in total_votes:
+            #user has voted so remove the vote
+            if vot['voter'] == user:
+                total_votes.remove(upvote_quiz)
+                for qtn in questions:
+                    if qtn['id'] == id:
+                        qtn['votes'] = qtn['votes'] -1
+                        return qtn
+
+        #user not voted, so add a vote
+        total_votes.append(upvote_quiz)
         for qtn in questions:
             if qtn['id'] == id:
                 qtn['votes'] = qtn['votes'] +1
                 return qtn
-    def downvotes(self,id):
-        for qtn in questions:
-            if qtn['id'] == id:
-                qtn['votes'] = qtn['votes'] -1
-                return qtn
+
+
+
+    
                 

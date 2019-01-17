@@ -32,10 +32,10 @@ def add_question(id,user=1):
 @v1.route('/questions/<int:id>/downvote', endpoint='downvote', methods=['PATCH'])
 def votes(id):
     if request.endpoint == 'apiv1.upvote':
-        Quizn = quiz().upvotes(id)
+        Quizn = quiz().upvotes(id,user=1)
         abort(make_response(jsonify({"data":Quizn}),201))
     elif request.endpoint == 'apiv1.downvote':
-        Quizn = quiz().downvotes(id)
+        Quizn = quiz().downvotes(id,user=1)
         abort(make_response(jsonify({"data":Quizn}),201)) 
 
 
