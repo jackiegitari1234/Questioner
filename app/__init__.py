@@ -16,6 +16,13 @@ def invalid_method(error):
         'status': 405
         }), 405
 
+#bad request
+def bad_request(error):
+    return jsonify({
+        'error': str(error),
+        'status': 400
+        }), 400
+
 #unexisting url
 def page_not_found(error):
     return jsonify({
@@ -42,6 +49,7 @@ def create_app(configName):
     app.register_error_handler(404, page_not_found)
     app.register_error_handler(500, server_error)
     app.register_error_handler(405, invalid_method)
+    app.register_error_handler(400, bad_request)
 
     # app.config["SECRET_KEY"] = "hsgghcguyds"
     return app

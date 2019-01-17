@@ -3,7 +3,7 @@ from flask import jsonify,request,abort,make_response
 
 #local imports
 from app.api.v1 import vers1 as v1
-from app.api.v1.models.meetups_model import meetup,meetups,rsvp,get_meetup,find_topic
+from app.api.v1.models.meetups_model import meetup,meetups,rsvp,get_meetup,find_topic,find_rsvp
 
 
 @v1.route('/meetups', methods=['POST'])
@@ -56,10 +56,13 @@ def add_rsvp(meetup_id):
     if len (user_data) > 2:
         abort(make_response(jsonify({"message":"Please provide just the required fields"}),400))
 
-
     meetup = meetup_id
     user = user_data['user']
     response = user_data['response']
+
+    if find_rsvp(meetup_id, user):
+        abort(make_response(jsonify({"message":"You aready submitted this RSVP"}),400))
+
 
     RSVP = rsvp(meetup,user,response).addRsvp()
     abort(make_response(jsonify({"data": RSVP}),201))

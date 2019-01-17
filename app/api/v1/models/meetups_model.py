@@ -47,3 +47,9 @@ class rsvp(object):
         }
         RSVPs.append(rsvp)
         return rsvp
+
+def find_rsvp(meetup_id, user):
+    for each_rsvp in RSVPs:
+        if each_rsvp['meetup'] == meetup_id:
+            if each_rsvp['user'] == user:
+                return each_rsvp
