@@ -47,5 +47,25 @@ class quiz(object):
 
 
 
-    
+    def downvotes(self,id,user):
+        upvote_quiz = {
+            "voter": user,
+            "question": id
+            }
+
+        for vot in total_downvotes:
+            #user has downvoted so remove the downvote
+            if vot['voter'] == user:
+                total_downvotes.remove(upvote_quiz)
+                for qtn in questions:
+                    if qtn['id'] == id:
+                        qtn['votes'] = qtn['votes'] +1
+                        return qtn
+
+        #user can downvote
+        total_downvotes.append(upvote_quiz)
+        for qtn in questions:
+            if qtn['id'] == id:
+                qtn['votes'] = qtn['votes'] -1
+                return qtn
                 
